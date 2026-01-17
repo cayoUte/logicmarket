@@ -1,6 +1,8 @@
 from tkinter import ttk
 import tkinter as tk
+
 from ui.utils import props_to_obj
+
 
 
 def Tab(parent, tab_config, hooks, **initial_props):
@@ -13,6 +15,5 @@ def Tab(parent, tab_config, hooks, **initial_props):
         notebook.add(frame, text=title)
         
         render_fn(frame, hooks, **initial_props)
-        hooks['subscribe'](frame, lambda w, p: w.configure(bg=p['bg_app']))
-    
+        hooks['subscribe'](frame, lambda w, p: w.configure(bg=p['bg_app']))        
     return notebook

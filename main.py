@@ -1,4 +1,5 @@
 import tkinter as tk
+from ui.components.Drawer import DrawerLayout
 from ui.components.Tab import Tab
 from ui.components.buttons.Button import Button
 from ui.components.inputs.Text_Input import Text_Input
@@ -7,8 +8,8 @@ from ui.state import gen_theme_manager
 import ui.styles as styles
 
 root = tk.Tk()
-root.geometry("400x300")
-root.title("LogicMarket")
+root.geometry("1100x700") # Un poco más ancho para acomodar el drawer
+root.title("LogicMarket Enterprise")
 
 subscribe, set_theme = gen_theme_manager(root)
 hooks = {"subscribe": subscribe}
@@ -16,33 +17,15 @@ hooks = {"subscribe": subscribe}
 initial_styles = styles.get_theme("light")
 root.configure(bg=initial_styles["bg_app"])
 
+
+rutas_app = {
+        "📊  Monitor": TabMonitor,     
+    }
+# Renderizar Layout Principal
+DrawerLayout(root, rutas_app, hooks, **initial_styles)
 # ==========================================
 #       UI
 # ========================================
-
-tab_config = {"Monitor de Inventario": TabMonitor}
-Tab(root, tab_config, hooks, **initial_styles)
-lbl_title = tk.Label(
-    root,
-    text=f"Logig Market",
-    bg=initial_styles["bg_app"],
-    fg=initial_styles["text_main"],
-    font=(
-        initial_styles["family"],
-        initial_styles["size_lg"],
-        initial_styles["weight_bold"],
-    ),
-)
-
-lbl_title.pack(pady=15)
-
-subscribe(
-    lbl_title, lambda w, props: w.configure(bg=props["bg_app"], fg=props["text_main"])
-)
-
-Text_Input(root, "Tu Nombre", hooks, **initial_styles)
-
-Text_Input(root, "Tu Correo", hooks, **initial_styles)
 
 local_state = ["light"]
 
