@@ -1,122 +1,142 @@
 import tkinter as tk
-from types import SimpleNamespace
-from ui.components.buttons.Button import Pillow_Button # Reusamos tu botón con pillow
+from ui import styles, utils
+from ui.components.buttons.Button import Pillow_Button
 
-def DrawerLayout(root, rutas, hooks, **props):
+def DrawerLayout(root, routes, hooks, **initial_props):
     """
-    rutas: Diccionario {'Nombre': funcion_renderizadora}
+    DrawerLayout: The main skeleton of the application.
+    
+    Args:
+        root: The parent Tkinter widget.
+        routes: Dictionary {'Route Name': render_function}.
+        hooks: Dictionary for state management/event subscription.
+        **initial_props: Theme properties and configuration.
     """
-    p = SimpleNamespace(**props)
+    defaults = styles.get_theme("light")
+    props = utils.props_to_obj(defaults, initial_props)
     
-    # --- 1. ESTRUCTURA PRINCIPAL (GRID 2 COLUMNAS) ---
-    # Usamos pack side='left' para el drawer y fill='both' para el contenido
+    # --- 1. MAIN STRUCTURE (2-COLUMN GRID) ---
+    # We use pack side='left' for the drawer and fill='both' for the content
     
-    # Contenedor del Sidebar (Izquierda)
-    sidebar = tk.Frame(root, bg=p.bg_sidebar, width=250)
+    # Sidebar Container (Left)
+    sidebar = tk.Frame(root, bg=props.bg_sidebar, width=250)
     sidebar.pack(side="left", fill="y")
-    sidebar.pack_propagate(False) # Forzar ancho fijo
+    sidebar.pack_propagate(False) # Force fixed width
     
-    # Línea divisoria vertical (Estética)
-    tk.Frame(root, bg=p.divider, width=1).pack(side="left", fill="y")
+    # Vertical Divider Line (Aesthetic)
+    tk.Frame(root, bg=props.divider, width=1).pack(side="left", fill="y")
 
-    # Contenedor de Contenido (Derecha - Dinámico)
-    content_area = tk.Frame(root, bg=p.bg_app)
+    # Content Container (Right - Dynamic)
+    content_area = tk.Frame(root, bg=props.bg_app)
     content_area.pack(side="right", expand=True, fill="both")
 
-    # --- 2. LOGICA DE NAVEGACIÓN (ROUTER) ---
-    estado_nav = {"actual": list(rutas.keys())[0]} # Guardamos la ruta actual
-    botones_refs = {} # Para actualizar estilos de botones (activo/inactivo)
+    # --- 2. NAVIGATION LOGIC (ROUTER) ---
+    nav_state = {"current": list(routes.keys())[0]} # Store current route
+    button_refs = {} # Store references to update button styles (Active/Inactive)
 
-    def navegar_a(nombre_ruta):
-        # A. Actualizar Estado Visual de Botones
-        estado_nav["actual"] = nombre_ruta
-        actualizar_botones()
+    def update_buttons():
+        """Iterates through buttons and changes color based on active state."""
+        for route, btn_widget in button_refs.items():
+            is_active = (route == nav_state["current"])
+            
+            # Define "Active" vs "Inactive" styles
+            # We calculate the specific colors for this state
+            state_style = {
+                # Merge current global props to keep fonts/sizes
+                **initial_props, 
+                "bg_app": props.bg_sidebar, # The canvas background must match sidebar
+                
+                # Visual Logic:
+                "primary": props.sidebar_active if is_active else props.bg_sidebar,
+                "text_btn": props.sidebar_active_text if is_active else props.text_sidebar,
+                "primary_active": props.sidebar_active,
+                "primary_hover": props.sidebar_active if is_active else props.sidebar_active
+            }
+            
+            # Trigger the theme update hook manually for this specific button
+            # We assume the Pillow_Button subscribed itself to the global hook system.
+            # Ideally, we would have a specific 'update' method, but we reuse the theme hook.
+            if hasattr(btn_widget, 'trigger_style_update'):
+                 btn_widget.trigger_style_update(state_style)
+            else:
+                # Fallback if you haven't implemented a specific method:
+                # We simulate a theme change just for this widget if your system allows it,
+                # otherwise, this part requires the button to expose an update function.
+                pass
 
-        # B. Limpiar Área de Contenido
+    def navigate_to(route_name):
+        # A. Update Visual State of Buttons
+        nav_state["current"] = route_name
+        update_buttons()
+
+        # B. Clear Content Area
         for widget in content_area.winfo_children():
             widget.destroy()
         
-        # C. Renderizar Nueva Vista
-        render_func = rutas[nombre_ruta]
-        render_func(content_area, hooks, **props)
+        # C. Render New View
+        render_func = routes[route_name]
+        render_func(content_area, hooks, **initial_props)
         
-        # D. Asegurar que el fondo del content area sea correcto
-        content_area.configure(bg=p.bg_app)
+        # D. Ensure content area background is correct
+        content_area.configure(bg=props.bg_app)
 
-    def actualizar_botones():
-        """Recorre los botones y cambia su color según si están activos"""
-        for ruta, btn_update_func in botones_refs.items():
-            es_activo = (ruta == estado_nav["actual"])
-            
-            # Definimos estilos "Activo" vs "Inactivo"
-            nuevos_estilos = {
-                "bg_app": p.sidebar_active if es_activo else p.bg_sidebar, # Fondo del botón
-                "primary": p.bg_sidebar, # Truco: Fondo transparente simulado
-                "text_btn": p.sidebar_active_text if es_activo else p.text_sidebar,
-                # Quitamos sombra o elevación si no está activo
-                "primary_active": p.sidebar_active,
-                "primary_hover": p.sidebar_active if es_activo else "#f5f5f5"
-            }
-            # Llamamos al hook de actualización del botón (asumiendo que Pillow_Button lo expone)
-            # NOTA: Pillow_Button necesita exponer una forma de actualizarse. 
-            # Si usas el sistema reactivo, esto se hace solo al redibujar, 
-            # pero aquí forzamos un redibujado manual o usamos hooks.
-            pass 
-
-    # --- 3. CONSTRUCCIÓN DEL SIDEBAR ---
+    # --- 3. SIDEBAR CONSTRUCTION ---
     
-    # Logo / Título de la App
+    # App Logo / Title
     lbl_logo = tk.Label(
         sidebar, 
         text="LogicMarket", 
-        font=(p.family[0], 18, "bold"),
-        bg=p.bg_sidebar,
-        fg=p.primary,
+        font=(props.family[0], 18, "bold"),
+        bg=props.bg_sidebar,
+        fg=props.primary,
         pady=30
     )
     lbl_logo.pack(anchor="center")
 
-    # Generar Botones de Navegación
-    for nombre_ruta in rutas.keys():
+    # Generate Navigation Buttons
+    for route_name in routes.keys():
         
-        # Wrapper para capturar el nombre de la ruta en la lambda
-        def crear_comando(r):
-            return lambda: navegar_a(r)
+        # Closure to capture the specific route name for the lambda
+        def create_command(r):
+            return lambda: navigate_to(r)
 
-        # Usamos Pillow_Button pero "Plano" (estilo Ghost)
-        # Necesitamos pasarle colores específicos para que parezca menú
-        estilo_btn_nav = {
-            **props,
-            "bg_app": p.bg_sidebar, # El fondo del canvas debe coincidir con el sidebar
-            "primary": p.bg_sidebar, # Color base (transparente visualmente)
-            "text_btn": p.text_sidebar,
-            "font_btn": (p.family[0], 11, "bold")
+        # Style definition for Navigation Buttons (Ghost Style)
+        nav_btn_style = {
+            "bg_app": props.bg_sidebar, # Canvas bg matches sidebar
+            "primary": props.bg_sidebar, # Transparent-ish base
+            "text_btn": props.text_sidebar,
+            "font_btn": (props.family[0], 11, "bold")
         }
         
+        # Create the button
         btn = Pillow_Button(
             sidebar, 
-            text=nombre_ruta, 
-            on_click=crear_comando(nombre_ruta), 
+            text=route_name, 
+            on_click=create_command(route_name), 
             hooks=hooks, 
             width=210, 
             height=45, 
             radius=10, 
-            **estilo_btn_nav
+            **nav_btn_style
         )
         btn.pack(pady=5)
         
-    # Footer (Opcional)
+        # Save reference for future updates
+        button_refs[route_name] = btn
+        
+    # Footer (Optional)
     tk.Label(
         sidebar, 
         text="v1.0.0", 
-        bg=p.bg_sidebar, 
-        fg=p.text_sidebar, 
-        font=(p.family[0], 8)
+        bg=props.bg_sidebar, 
+        fg=props.text_sidebar, 
+        font=(props.family[0], 8)
     ).pack(side="bottom", pady=20)
 
-    # --- 4. CARGA INICIAL ---
-    navegar_a(list(rutas.keys())[0])
+    # --- 4. INITIAL LOAD ---
+    # Load the first route by default
+    navigate_to(list(routes.keys())[0])
 
-    # Hooks para Tema (Reactividad global)
-    hooks['subscribe'](sidebar, lambda w, prop: w.configure(bg=prop['bg_sidebar']))
-    hooks['subscribe'](content_area, lambda w, prop: w.configure(bg=prop['bg_app']))
+    # Global Theme Hooks (Reactive)
+    hooks['subscribe'](sidebar, lambda w, p: w.configure(bg=p['bg_sidebar']))
+    hooks['subscribe'](content_area, lambda w, p: w.configure(bg=p['bg_app']))

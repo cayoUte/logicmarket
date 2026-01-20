@@ -45,4 +45,5 @@ theme_btn = Button(
     **initial_styles,
 )
 theme_btn.pack(pady=5)
+
 root.mainloop()

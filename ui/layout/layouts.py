@@ -2,6 +2,7 @@ import tkinter as tk
 from ui.components.Table import Table
 # Ya no importamos Styled_Button porque se ve pixelado
 from ui.components.buttons.Button import Pillow_Button 
+from ui.components.buttons.Icon_Button import IconButton
 from ui.components.inputs.Text_Input import Text_Input
 
 def TabMonitor(parent, hooks, **props):
@@ -16,34 +17,28 @@ def TabMonitor(parent, hooks, **props):
     _, search_entry = Text_Input(frame_top, "Buscar Producto: ", hooks, **props)
     
     # --- SECCIÓN DE ACCIONES (BOTONES) ---
-    frame_btns = tk.Frame(frame_top, bg=props['bg_app'])
-    frame_btns.pack(fill='x', pady=10) # Un poco más de aire vertical
+    frame_actions = tk.Frame(frame_top, bg=props['bg_app'])
+    frame_actions.pack(fill='x', pady=10) # Un poco más de aire vertical
     
-    # BOTÓN 1: FILTRAR (Acción Principal - Violeta)
-    # Usamos Pillow_Button para bordes suaves
-    Pillow_Button(
-        frame_btns, 
-        text="🔍 Filtrar", 
-        on_click=lambda: print("Filtrando..."), 
-        hooks=hooks, 
-        width=150,      # Un poco más compacto
-        height=40, 
-        radius=20,
-        **props         # Hereda color primario (Violeta) por defecto
-    ).pack(side='left', padx=5)
-
-    # BOTÓN 2: RECARGAR (Acción Secundaria - Gris)
-    # Sobrescribimos los colores 'primary' para que este botón sea gris
-    Pillow_Button(
-        frame_btns, 
-        text="🔄 Recargar API", 
-        on_click=lambda: print("Recargando..."), 
-        hooks=hooks, 
-        width=150, 
-        height=40, 
-        radius=20,        
+    # Filter Icon Button
+    IconButton(
+        frame_actions,
+        icon_path="filter_alt.svg", 
+        on_click=lambda: print("Filter clicked"),
+        hooks=hooks,
+        size=28, # Slightly larger icon
         **props
-    ).pack(side='left', padx=5)
+    ).pack(side="left", padx=5)
+
+    # Refresh Icon Button
+    IconButton(
+        frame_actions,
+        icon_path="sync.svg",
+        on_click=lambda: print("Refresh clicked"),
+        hooks=hooks,
+        size=28,
+        **props
+    ).pack(side="left", padx=5)
     
     # --- SECCIÓN CENTRAL: TABLA ---
     cols = [
@@ -75,4 +70,4 @@ def TabMonitor(parent, hooks, **props):
     # Actualizan los colores si cambias de tema en tiempo real
     hooks['subscribe'](lbl_status, lambda w, p: w.configure(bg=p['bg_app'], fg=p['text_main']))
     hooks['subscribe'](frame_top, lambda w, p: w.configure(bg=p['bg_app']))
-    hooks['subscribe'](frame_btns, lambda w, p: w.configure(bg=p['bg_app']))
+    hooks['subscribe'](frame_actions, lambda w, p: w.configure(bg=p['bg_app']))

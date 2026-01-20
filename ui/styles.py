@@ -82,7 +82,7 @@ DARK_THEME = {
     "warning": "#ffa726",
 
     #--- DRAWER ---
-    "bg_sidebar": "#ffffff",       # Blanco puro para el sidebar
+    "bg_sidebar": "#2d2d2d",       # Blanco puro para el sidebar
     "text_sidebar": "#546e7a",     # Gris azulado para items inactivos
     "sidebar_active": "#e3f2fd",   # Fondo azul muy claro para item activo
     "sidebar_active_text": "#1976d2", # Azul fuerte para texto activo
