@@ -1,5 +1,4 @@
 import tkinter as tk
-
 from ui import utils
 
 def IconButton(parent, icon_path, on_click, hooks, size=24, **initial_props):
@@ -12,23 +11,23 @@ def IconButton(parent, icon_path, on_click, hooks, size=24, **initial_props):
     state = {
         "hover": False,
         "pressed": False,
-        "bg_parent": props.bg_app,
-        # Default colors (Icon takes the 'text_main' color usually, or primary)
-        "color_normal": props.bg_app, 
+        "bg_parent": props.bg_app, # Este es el color que necesitamos
+        "color_normal": props.text_secondary, 
         "color_hover": props.primary,
         "color_active": props.primary_active
     }
 
     # 2. CANVAS SETUP
-    # We use a square canvas + padding
     padding = 8
     canvas_size = size + (padding * 2)
-    print( f"Creating IconButton with size {canvas_size} (icon size {size} + padding {padding*2}) + bg {state['bg_parent']}" )
+    
     canvas = tk.Canvas(
         parent,
         width=canvas_size,
         height=canvas_size,
-        bg='#000000',
+        # --- CORRECCIÓN: Usar el color del padre, NO negro fijo ---
+        bg=state['bg_parent'], 
+        # ---------------------------------------------------------
         highlightthickness=0,
         cursor="hand2"
     )
@@ -40,48 +39,50 @@ def IconButton(parent, icon_path, on_click, hooks, size=24, **initial_props):
         # Determine Color
         if state["pressed"]:
             current_color = state["color_active"]
-            bg_fill = props.sidebar_active # Optional: Background circle on click
+            bg_fill = props.sidebar_active 
         elif state["hover"]:
             current_color = state["color_hover"]
-            bg_fill = props.bg_app # Or a subtle hover color
+            bg_fill = props.sidebar_active
         else:
             current_color = state["color_normal"]
             bg_fill = state["bg_parent"]
 
-        # Determine Offset (Click effect)
         offset = 1 if state["pressed"] else 0
+        center = int(canvas_size / 2) + offset
 
         # Optional: Draw Hover Background Circle/Rounded Rect
         if state["hover"]:
-             # Draw a circle with a contrasting color for the hover effect
-             canvas.create_oval(
-                 2, 2, canvas_size-2, canvas_size-2, 
-                 fill=bg_fill, # Use a contrasting color from styles
-                 outline=""
-                 
-             )
+            # Usamos la imagen suave de utils en lugar de create_oval pixelado
+            circle_diameter = canvas_size - 2
+            # Pasamos el color de relleno (violeta claro) y el color de fondo "camuflaje"
+            tk_circle = utils.get_circle_image(circle_diameter, bg_fill, state["bg_parent"])
+            
+            canvas.create_image(
+                center, center, 
+                image=tk_circle, 
+                anchor="center"
+            )
+            # Guardamos referencia para que no se borre de memoria
+            canvas.bg_image = tk_circle 
+
         # Load and Draw Icon
-        # We assume the icon is at assets/icons/
-        full_path = f"ui/assets/material_icons/{icon_path}" 
+        full_path = f"ui/assets/material_icons/{icon_path}"
         
-        tk_icon = utils.load_svg_icon(full_path, size, current_color)
+        # Pasamos el color del fondo actual para el "camuflaje" del SVG
+        bg_camuflaje = bg_fill if state["hover"] else state["bg_parent"]
+        
+        tk_icon = utils.load_svg_icon(full_path, size, current_color, bg_camuflaje)
         
         if tk_icon:
             canvas.create_image(
-                canvas_size/2 + offset, 
-                canvas_size/2 + offset, 
+                center, center, 
                 image=tk_icon, 
-                anchor="center",                                
+                anchor="center"
             )
-            canvas.image = tk_icon
-            canvas.configure(bg=state["bg_parent"])
-        else:
-            # Fallback visual si falla svglib (ej. un círculo de color)
-            r = size / 2
-            cx, cy = canvas_size/2 + offset, canvas_size/2 + offset
-            canvas.create_oval(cx-r, cy-r, cx+r, cy+r, fill=current_color)
-            # Keep reference to avoid garbage collection
-            canvas.image = tk_icon
+            canvas.icon_image = tk_icon 
+        
+        # Asegurar que el fondo del canvas coincida con el padre si cambió el tema
+        canvas.configure(bg=state["bg_parent"])
 
     draw()
 
@@ -119,6 +120,7 @@ def IconButton(parent, icon_path, on_click, hooks, size=24, **initial_props):
         state["color_hover"] = p.primary
         state["color_active"] = p.primary_active
         
+        # Importante: actualizar el fondo del widget canvas
         widget.configure(bg=p.bg_app)
         draw()
 

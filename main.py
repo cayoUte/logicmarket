@@ -1,49 +1,89 @@
 import tkinter as tk
-from ui.components.Drawer import DrawerLayout
-from ui.components.Tab import Tab
-from ui.components.buttons.Button import Button
-from ui.components.inputs.Text_Input import Text_Input
-from ui.layout.layouts import TabMonitor
-from ui.state import gen_theme_manager
-import ui.styles as styles
-
-root = tk.Tk()
-root.geometry("1100x700") # Un poco más ancho para acomodar el drawer
-root.title("LogicMarket Enterprise")
-
-subscribe, set_theme = gen_theme_manager(root)
-hooks = {"subscribe": subscribe}
-
-initial_styles = styles.get_theme("light")
-root.configure(bg=initial_styles["bg_app"])
+from gui.components.layouts.PersistentDrawer import PersistentDrawer
+from gui.pages.CRUD import ImporterPage
+from gui.pages.HomePage import HomePage
+from persistance.inventory import load_inventory_from_file, save_inventory_to_file
+from routes.routes import routes, menu_items
+from gui.theme.fonts import load_custom_fonts
+from store.reducer.inventory_reducer import inventory_reducer
+from store.store import create_store
 
 
-rutas_app = {
-        "📊  Monitor": TabMonitor,     
+
+def main():
+    root = tk.Tk()
+    root.geometry("1024x768")
+
+    bg_app = "#f5f9f4"
+    root.configure(bg=bg_app)
+
+    content_area = tk.Frame(root, bg=bg_app)
+    content_area.pack(side="right", fill="both", expand=True)
+    load_custom_fonts()
+    
+    
+    # 1. Estado Inicial
+    initial_state = {
+        "inventario": load_inventory_from_file(),
+        "resultados_api": [],
+        "loading": False
     }
-# Renderizar Layout Principal
-DrawerLayout(root, rutas_app, hooks, **initial_styles)
-# ==========================================
-#       UI
-# ========================================
+    
+    # 2. CREACIÓN DEL STORE (Estilo Funcional)
+    # Desempaquetamos las funciones que devuelve el closure
+    dispatch, subscribe, get_state = create_store(
+        inventory_reducer, 
+        initial_state
+    )
+    
+    # 3. Persistencia (Side Effect controlado)
+    def auto_save(state):
+        save_inventory_to_file(state["inventario"])
+        
+    subscribe(auto_save)
 
-local_state = ["light"]
+    # 4. Inyección de dependencias
+    # Pasamos una tupla o un diccionario con las funciones que la página necesita
+    store_funcs = {
+        "dispatch": dispatch, 
+        "subscribe": subscribe, 
+        "get_state": get_state
+    }
+    
+    
+
+    def load_page(page_id):
+
+        for widget in content_area.winfo_children():
+            widget.destroy()
+
+        page_constructor = routes.get(page_id)
+
+        if page_constructor:
+            print(f"Routing to: {page_id}")
+            if page_id == "importer":
+                new_page = ImporterPage(content_area, store_funcs)
+            elif page_id == "home":
+                new_page = HomePage(content_area, on_navigate=load_page)
+            else:
+                new_page = page_constructor(content_area)
+            new_page.pack(fill="both", expand=True)
+        else:
+            print(f"Error: 404 Page not found for id '{page_id}'")
+
+    sidebar = PersistentDrawer(
+        root,
+        nav_items=menu_items,
+        on_navigate=load_page,
+        width=80,
+        variant="primary",
+    )
+    sidebar.pack(side="left", fill="y")
+
+    sidebar.select_item("home")
+
+    root.mainloop()
 
 
-def toggle_theme():
-    new_mode = "dark" if local_state[0] == "light" else "light"
-    local_state[0] = new_mode
-    set_theme(new_mode)
-
-
-theme_btn = Button(
-    root,
-    f"Cambiar Tema a {'dark' if local_state[0] == 'light' else 'light'}",
-    toggle_theme,
-    hooks,
-    type="primary",
-    **initial_styles,
-)
-theme_btn.pack(pady=5)
-
-root.mainloop()
+if __name__ == "__main__":
+    main()

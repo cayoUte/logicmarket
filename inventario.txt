@@ -1,0 +1,92 @@
+[
+    {
+        "COD": "9759",
+        "PRODUCTO": "100G EXCELLENCE NR 90% LINDT",
+        "MARCA": "Lindt",
+        "CATEGORÍA": "Botanas",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "8004",
+        "PRODUCTO": "Excellence 70% Cocoa Intense Dark",
+        "MARCA": "Lindt",
+        "CATEGORÍA": "Lanches comida",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "8363",
+        "PRODUCTO": "Excellence 85% Cacao Rich Dark",
+        "MARCA": "Lindt",
+        "CATEGORÍA": "Lanches comida",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "5553",
+        "PRODUCTO": "Шоколад 85% какаова маса",
+        "MARCA": "J.D. Gross",
+        "CATEGORÍA": "Закуски",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "2024",
+        "PRODUCTO": "",
+        "MARCA": "Maruja",
+        "CATEGORÍA": "Snacks",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "8464",
+        "PRODUCTO": "Organic 70% Dark Chocolate Bar",
+        "MARCA": "Green & Black's",
+        "CATEGORÍA": "Snacks",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "2651",
+        "PRODUCTO": "100GR EXC NR MILD 70% LINDT",
+        "MARCA": "Lindt",
+        "CATEGORÍA": "Dairies",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "4724",
+        "PRODUCTO": "Dark chocolate",
+        "MARCA": "Green & Black's",
+        "CATEGORÍA": "Snacks",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "2606",
+        "PRODUCTO": "100G EXCELLENCE NOIR 85% LINDT",
+        "MARCA": "Lindt",
+        "CATEGORÍA": "Snacks",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "COD": "2464",
+        "PRODUCTO": "Extra dark chocolate 74% cacao",
+        "MARCA": "Fin Carré",
+        "CATEGORÍA": "snacks",
+        "STOCK": 0,
+        "PRECIO": 0.0,
+        "PROVEEDOR": "OpenFood Import"
+    }
+]

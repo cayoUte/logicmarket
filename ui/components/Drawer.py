@@ -35,48 +35,44 @@ def DrawerLayout(root, routes, hooks, **initial_props):
     button_refs = {} # Store references to update button styles (Active/Inactive)
 
     def update_buttons():
-        """Iterates through buttons and changes color based on active state."""
-        for route, btn_widget in button_refs.items():
+        """Recorre los botones y llama a SU función de actualización específica."""
+        # Desempaquetamos la tupla (widget, update_func)
+        for route, (btn_widget, btn_update_func) in button_refs.items():
             is_active = (route == nav_state["current"])
             
-            # Define "Active" vs "Inactive" styles
-            # We calculate the specific colors for this state
+            # Definimos estilos "Activo" vs "Inactivo"
             state_style = {
-                # Merge current global props to keep fonts/sizes
-                **initial_props, 
-                "bg_app": props.bg_sidebar, # The canvas background must match sidebar
+                 # Mezclamos props globales para mantener fuentes/tamaños
+                **initial_props,
+                "bg_app": props.bg_sidebar, 
                 
-                # Visual Logic:
+                # Lógica Visual:
+                # Si es activo, el color primario es el azul claro, si no, es transparente (bg_sidebar)
                 "primary": props.sidebar_active if is_active else props.bg_sidebar,
+                # El texto cambia de color
                 "text_btn": props.sidebar_active_text if is_active else props.text_sidebar,
+                # Hover estados
                 "primary_active": props.sidebar_active,
                 "primary_hover": props.sidebar_active if is_active else props.sidebar_active
             }
             
-            # Trigger the theme update hook manually for this specific button
-            # We assume the Pillow_Button subscribed itself to the global hook system.
-            # Ideally, we would have a specific 'update' method, but we reuse the theme hook.
-            if hasattr(btn_widget, 'trigger_style_update'):
-                 btn_widget.trigger_style_update(state_style)
-            else:
-                # Fallback if you haven't implemented a specific method:
-                # We simulate a theme change just for this widget if your system allows it,
-                # otherwise, this part requires the button to expose an update function.
-                pass
+            # --- LA SOLUCIÓN ---
+            # Llamamos directamente a la función de actualización que nos dio el botón
+            btn_update_func(state_style)
+
 
     def navigate_to(route_name):
-        # A. Update Visual State of Buttons
+        # A. Actualizar Estado Visual de Botones PRIMERO
         nav_state["current"] = route_name
         update_buttons()
 
+        # ... (Resto de la función navigate_to igual: limpiar y renderizar contenido) ...
         # B. Clear Content Area
         for widget in content_area.winfo_children():
             widget.destroy()
-        
         # C. Render New View
         render_func = routes[route_name]
         render_func(content_area, hooks, **initial_props)
-        
         # D. Ensure content area background is correct
         content_area.configure(bg=props.bg_app)
 
@@ -96,20 +92,20 @@ def DrawerLayout(root, routes, hooks, **initial_props):
     # Generate Navigation Buttons
     for route_name in routes.keys():
         
-        # Closure to capture the specific route name for the lambda
         def create_command(r):
             return lambda: navigate_to(r)
 
-        # Style definition for Navigation Buttons (Ghost Style)
+        # Estilo inicial (Inactivo)
         nav_btn_style = {
-            "bg_app": props.bg_sidebar, # Canvas bg matches sidebar
-            "primary": props.bg_sidebar, # Transparent-ish base
+            "bg_app": props.bg_sidebar,
+            "primary": props.bg_sidebar,
             "text_btn": props.text_sidebar,
             "font_btn": (props.family[0], 11, "bold")
         }
         
-        # Create the button
-        btn = Pillow_Button(
+        # --- CAMBIO AQUÍ ---
+        # Recibimos EL WIDGET y LA FUNCIÓN DE UPDATE
+        btn_widget, btn_update_func = Pillow_Button(
             sidebar, 
             text=route_name, 
             on_click=create_command(route_name), 
@@ -119,10 +115,10 @@ def DrawerLayout(root, routes, hooks, **initial_props):
             radius=10, 
             **nav_btn_style
         )
-        btn.pack(pady=5)
+        btn_widget.pack(pady=5)
         
-        # Save reference for future updates
-        button_refs[route_name] = btn
+        # Guardamos ambos en el diccionario de referencias
+        button_refs[route_name] = (btn_widget, btn_update_func)
         
     # Footer (Optional)
     tk.Label(
@@ -135,8 +131,9 @@ def DrawerLayout(root, routes, hooks, **initial_props):
 
     # --- 4. INITIAL LOAD ---
     # Load the first route by default
-    navigate_to(list(routes.keys())[0])
+    # Al llamar esto aquí, se ejecutará update_buttons() y pintará el activo inicial
+    navigate_to(list(routes.keys())[0]) 
 
-    # Global Theme Hooks (Reactive)
+    # Hooks globales
     hooks['subscribe'](sidebar, lambda w, p: w.configure(bg=p['bg_sidebar']))
     hooks['subscribe'](content_area, lambda w, p: w.configure(bg=p['bg_app']))
