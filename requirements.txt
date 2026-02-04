@@ -3,3 +3,4 @@ svglib
 reportlab
 tkextrafont
 aiohttp
+resvg-py

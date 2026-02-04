@@ -88,5 +88,46 @@
         "STOCK": 0,
         "PRECIO": 0.0,
         "PROVEEDOR": "OpenFood Import"
+    },
+    {
+        "code": "7861029402267",
+        "name": "Leche Vita",
+        "brand": "Pasteurizadora Quito. S.A",
+        "category": "Lácteos",
+        "country": "Ecuador",
+        "price": 0.0,
+        "stock": 0
+    },
+    {
+        "code": "8436548626372",
+        "name": "",
+        "brand": "Perca Olivia",
+        "category": "Alimentos y bebidas de origen vegetal",
+        "country": "en:Ecuador",
+        "price": 1.0,
+        "stock": 2,
+        "supplier": "pepito"
+    },
+    {
+        "code": "7861029404803",
+        "name": "",
+        "brand": "Vita",
+        "category": "Dairies",
+        "country": "Équateur",
+        "price": 0.0,
+        "stock": 0,
+        "supplier": "Genérico",
+        "image_url": ""
+    },
+    {
+        "code": "8436548626372",
+        "name": "",
+        "brand": "Perca Olivia",
+        "category": "Alimentos y bebidas de origen vegetal",
+        "country": "en:Ecuador",
+        "price": 0.0,
+        "stock": 0,
+        "supplier": "Genérico",
+        "image_url": ""
     }
 ]

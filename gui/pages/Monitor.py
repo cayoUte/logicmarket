@@ -1,5 +1,4 @@
 import tkinter as tk
-from gui.components.inputs.TextInput import TextInput
 from gui.components.Table import Table
 from gui.components.buttons.Button import Pillow_Button
 
@@ -22,19 +21,13 @@ def InventoryPage(parent):
     left_actions = tk.Frame(action_bar, bg=bg_color)
     left_actions.pack(side="left")
 
-    # A. Input de Búsqueda
-    search_input = TextInput(
-        left_actions, 
-        placeholder="Buscar producto...", 
-        variant="neutral", # Gris claro
-        width=250
-    )
-    search_input.pack(side="left", padx=(0, 10)) # Margen derecho
+    
+    
 
     # B. Botón Filtrar (Oscuro con Lupa)
     def on_filter():
-        term = search_input.get_value()
-        print(f"Filtrando por: {term}")
+        # term = search_input.get_value()
+        print(f"Filtrando por: {'...' }")
 
     btn_filter = Pillow_Button(
         left_actions,

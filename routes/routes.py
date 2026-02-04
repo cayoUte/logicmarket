@@ -2,7 +2,7 @@
 from gui.pages.HomePage import HomePage
 from gui.pages.PricingPage import PricingPage
 from gui.pages.Monitor import InventoryPage
-from gui.pages.CRUD import ImporterPage
+from gui.pages.ImporterPage import ImporterPage
 routes = {
         "home": HomePage,
         "inventory": InventoryPage,

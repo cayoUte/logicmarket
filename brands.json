@@ -1,0 +1,798 @@
+{
+  "xx:tortex": { "wikidata": { "en": "Q1747471" }, "name": { "xx": "Tortex" } },
+  "xx:melvita": { "name": { "xx": "Melvita" } },
+  "xx:pagen": { "wikidata": { "en": "Q3102193" }, "name": { "xx": "Pågen" } },
+  "xx:melkan": {
+    "name": { "xx": "Melkan" },
+    "wikidata": { "en": "Q136913078" }
+  },
+  "xx:deka-s-keuken": {
+    "wikidata": { "en": "Q137458930" },
+    "name": { "xx": "Deka's Keuken" }
+  },
+  "xx:kavli": { "wikidata": { "en": "Q1208110" }, "name": { "xx": "Kavli" } },
+  "xx:bostan": {
+    "name": { "xx": "Bostan" },
+    "wikidata": { "en": "Q137459231" }
+  },
+  "xx:bongran": {
+    "wikidata": { "en": "Q137512889" },
+    "name": { "xx": "Bongran" }
+  },
+  "xx:amanie": { "name": { "xx": "Amanie" } },
+  "xx:jozo": { "name": { "xx": "JOZO" }, "wikidata": { "en": "Q10538850" } },
+  "xx:milner": {
+    "wikidata": { "en": "Q115574159" },
+    "name": { "xx": "Milner" }
+  },
+  "xx:delicata": {
+    "comment": { "en": "private chocolate label of Albert Heijn" },
+    "wikidata": { "en": "Q137351879" },
+    "name": { "xx": "Delicata" }
+  },
+  "xx:pimelia": { "name": { "xx": "Pimélia" } },
+  "xx:veritas": { "name": { "xx": "Veritas" } },
+  "xx:økoladen": { "name": { "xx": "Økoladen" } },
+  "xx:special-k": { "name": { "xx": "Special K" } },
+  "xx:schulstad": {
+    "wikidata": { "en": "Q12334753" },
+    "name": { "xx": "Schulstad" }
+  },
+  "xx:remia": { "name": { "xx": "Remia" } },
+  "xx:lindt": { "wikidata": { "en": "Q152822" }, "name": { "xx": "Lindt" } },
+  "xx:golden-sun": {
+    "wikidata": { "en": "Q136825332" },
+    "name": { "xx": "Golden Sun" }
+  },
+  "xx:xtra": { "wikidata": { "en": "Q11902541" }, "name": { "xx": "Xtra" } },
+  "xx:dan-cake": {
+    "name": { "xx": "Dan Cake" },
+    "wikidata": { "en": "Q12307101" }
+  },
+  "xx:duyvis": { "name": { "xx": "Duyvis" }, "wikidata": { "en": "Q2189294" } },
+  "xx:zanetti": { "name": { "xx": "Zanetti" } },
+  "xx:vita-d-or": { "name": { "xx": "Vita d'Or" } },
+  "xx:beauvais": {
+    "name": { "xx": "Beauvais" },
+    "wikidata": { "en": "Q12303007" }
+  },
+  "xx:tyngre": { "name": { "xx": "Tyngre" } },
+  "xx:krekeltje": { "name": { "xx": "Krekeltje" } },
+  "xx:zandvliet": {
+    "name": { "xx": "Zandvliet" },
+    "wikidata": { "en": "Q137477005" }
+  },
+  "xx:dahls": { "name": { "xx": "Dahls" } },
+  "xx:picnic": {
+    "name": { "xx": "Picnic" },
+    "wikidata": { "en": "Q136825786" }
+  },
+  "xx:olw": { "name": { "xx": "OLW" }, "wikidata": { "en": "Q1775404" } },
+  "xx:sawa": { "name": { "xx": "Sawa" } },
+  "xx:ah-excellent": {
+    "wikidata": { "en": "Q136928844" },
+    "name": { "xx": "AH Excellent" }
+  },
+  "xx:wasa": { "wikidata": { "en": "Q2298302" }, "name": { "xx": "Wasa" } },
+  "xx:kania": {
+    "comment": { "en": "private brand of Lidl" },
+    "wikidata": { "en": "Q136824610" },
+    "name": { "xx": "Kania" }
+  },
+  "xx:van-de-boom": {
+    "name": { "xx": "Van de Boom" },
+    "wikidata": { "en": "Q136891976" }
+  },
+  "xx:jardin-bio-etic": {
+    "wikidata": { "en": "Q137591022" },
+    "name": { "xx": "Jardin Bio étic" }
+  },
+  "xx:daily-chef": { "name": { "xx": "Daily Chef" } },
+  "xx:verkade": { "name": { "xx": "Verkade" } },
+  "xx:grainway": { "name": { "xx": "Grainway" } },
+  "xx:nat-vie": { "name": { "xx": "NAT&vie" } },
+  "xx:limax-spolka": {
+    "name": { "xx": "Limax Spolka" },
+    "comment": { "en": "a proxy brand of the packager" },
+    "wikidata": { "en": "Q137049303" }
+  },
+  "xx:soutenons-nos-agriculteurs": {
+    "name": { "xx": "Soutenons nos agriculteurs" }
+  },
+  "xx:grillon-d-or": {
+    "wikidata": { "en": "Q137569393" },
+    "name": { "xx": "Grillon d'Or" }
+  },
+  "xx:rema-1000": {
+    "wikidata": { "en": "Q28459" },
+    "name": { "xx": "REMA 1000" }
+  },
+  "xx:yonca": { "name": { "xx": "Yonca" }, "wikidata": { "en": "Q137442478" } },
+  "xx:body-science": { "name": { "xx": "Body Science" } },
+  "xx:cloetta": {
+    "name": { "xx": "Cloetta" },
+    "wikidata": { "en": "Q3437039" }
+  },
+  "xx:hanegal": { "name": { "xx": "Hanegal" } },
+  "xx:biteswelove": {
+    "name": { "xx": "BitesWeLove" },
+    "wikidata": { "en": "Q136996105" }
+  },
+  "xx:alesto": {
+    "name": { "xx": "Alesto" },
+    "wikidata": { "en": "Q137428531" }
+  },
+  "xx:star-nutrition": { "name": { "xx": "Star Nutrition" } },
+  "xx:findus": { "wikidata": { "en": "Q869728" }, "name": { "xx": "Findus" } },
+  "xx:saffola": { "name": { "xx": "Saffola" } },
+  "xx:minute-maid": {
+    "wikidata": { "en": "Q136859200" },
+    "name": { "xx": "Minute Maid" }
+  },
+  "xx:galbusera": {
+    "wikidata": { "en": "Q137049250" },
+    "name": { "xx": "Galbusera" }
+  },
+  "xx:smikkelhuys": {
+    "name": { "xx": "Smikkelhuys" },
+    "wikidata": { "en": "Q136930176" }
+  },
+  "xx:santa-maria": { "name": { "xx": "Santa Maria" } },
+  "xx:mae-terra": { "name": { "xx": "Mãe terra" } },
+  "xx:ikbal": {
+    "wikidata": { "en": "Q137049723" },
+    "name": { "ar": "إقبال", "xx": "Ikbal" }
+  },
+  "xx:first-price": {
+    "wikidata": { "en": "Q5453722" },
+    "name": { "xx": "First Price" }
+  },
+  "xx:fanta": { "name": { "xx": "Fanta" } },
+  "xx:magioni": {
+    "name": { "xx": "Magioni" },
+    "wikidata": { "en": "Q137393512" }
+  },
+  "xx:sia-glass": {
+    "name": { "xx": "SIA Glass" },
+    "wikidata": { "en": "Q7390267" }
+  },
+  "xx:sol-mar": { "name": { "xx": "Sol&Mar" } },
+  "xx:chøkolade": { "name": { "xx": "Chøkolade" } },
+  "xx:prominent": { "name": { "xx": "Prominent" } },
+  "xx:golden-power": { "name": { "xx": "Golden Power" } },
+  "xx:renee-voltaire": {
+    "wikidata": { "en": "Q136622857" },
+    "name": { "xx": "Renée Voltaire" }
+  },
+  "xx:optimel": {
+    "name": { "xx": "Optimel" },
+    "wikidata": { "en": "Q124221966" }
+  },
+  "xx:brouwmeester": {
+    "name": { "xx": "Brouwmeester" },
+    "wikidata": { "en": "Q136929479" }
+  },
+  "xx:pierre-martinet": {
+    "wikidata": { "en": "Q136824443" },
+    "name": { "xx": "Pierre Martinet" }
+  },
+  "xx:biorganica-nuova": { "name": { "xx": "Biorganica nuova" } },
+  "xx:healthy-co": { "name": { "xx": "Healthy Co" } },
+  "xx:cirio": { "name": { "xx": "Cirio" }, "wikidata": { "en": "Q3070443" } },
+  "xx:bioheme": {
+    "name": { "xx": "Bioheme" },
+    "wikidata": { "en": "Q137512976" }
+  },
+  "xx:marks-spencers": {
+    "name": { "xx": "Marks & Spencers" },
+    "wikidata": { "en": "Q714491" }
+  },
+  "xx:marabou": {
+    "wikidata": { "en": "Q1812718" },
+    "name": { "xx": "Marabou" }
+  },
+  "xx:rawfoodshop": { "name": { "xx": "Rawfoodshop" } },
+  "xx:albert-heijn-terra": {
+    "name": { "xx": "Albert Heijn Terra" },
+    "wikidata": { "en": "Q136837987" }
+  },
+  "xx:gaam": { "name": { "xx": "GAAM" } },
+  "xx:asia-green-garden": { "name": { "xx": "Asia Green Garden" } },
+  "xx:al-fez": {
+    "name": { "xx": "Al'fez" },
+    "wikidata": { "en": "Q136892984" }
+  },
+  "xx:verstegen": { "name": { "xx": "Verstegen" } },
+  "xx:lindahls": { "name": { "xx": "Lindahls" } },
+  "xx:delifrance": {
+    "name": { "xx": "Délifrance" },
+    "wikidata": { "en": "Q136996080" }
+  },
+  "xx:garofalo": { "name": { "xx": "Garofalo" } },
+  "xx:øgo": { "name": { "xx": "ØGO" } },
+  "xx:kung-markatta": {
+    "wikidata": { "en": "Q10550149" },
+    "name": { "xx": "Kung Markatta" }
+  },
+  "xx:chef-select": { "name": { "xx": "Chef Select" } },
+  "xx:marque-repere": {
+    "name": { "xx": "Marque Repère" },
+    "wikidata": { "en": "Q3294723" }
+  },
+  "xx:carrefour-bio": {
+    "wikidata": { "en": "Q55221138" },
+    "name": { "xx": "Carrefour BIO" }
+  },
+  "xx:eurobakker": {
+    "wikidata": { "en": "Q137176343" },
+    "name": { "xx": "Eurobakker" }
+  },
+  "xx:coop-naturaplan": {
+    "name": { "xx": "Coop naturaplan" },
+    "wikidata": { "en": "Q137481545" }
+  },
+  "xx:poiesz": { "name": { "xx": "Poiesz" } },
+  "xx:lay-s-max": {
+    "wikidata": { "en": "Q136914171" },
+    "name": { "xx": "Lay's Max" }
+  },
+  "xx:venco": { "wikidata": { "en": "Q136933516" }, "name": { "xx": "Venco" } },
+  "xx:signature-foods-tapas": { "name": { "xx": "Signature Foods Tapas" } },
+  "xx:økolivet": { "name": { "xx": "Økolivet" } },
+  "xx:biscoff": {
+    "name": { "xx": "Biscoff" },
+    "wikidata": { "en": "Q116641741" }
+  },
+  "xx:sevan": { "name": { "xx": "Sevan" } },
+  "xx:verpaco": { "name": { "xx": "Verpaco" } },
+  "xx:de-cecco": {
+    "name": { "xx": "De Cecco" },
+    "wikidata": { "en": "Q931123" }
+  },
+  "xx:gestus": { "name": { "xx": "Gestus" } },
+  "xx:g-woon": {
+    "wikidata": { "en": "Q136875635" },
+    "name": { "xx": "G'woon" }
+  },
+  "xx:font-vella": {
+    "name": { "xx": "Font Vella" },
+    "wikidata": { "en": "Q3811351" }
+  },
+  "xx:kaptein": {
+    "name": { "xx": "Kaptein" },
+    "wikidate": { "en": "Q136825884" }
+  },
+  "xx:ns-galletas": { "name": { "xx": "NS Galletas" } },
+  "xx:kruidvat": {
+    "wikidata": { "en": "Q136868232" },
+    "name": { "xx": "Kruidvat" }
+  },
+  "xx:primeal": {
+    "wikidata": { "en": "Q137393142" },
+    "name": { "xx": "Priméal" }
+  },
+  "xx:van-eigen-deeg": { "name": { "xx": "Van Eigen Deeg" } },
+  "xx:h-e-b": { "wikidata": { "en": "Q830621" }, "name": { "xx": "H-E-B" } },
+  "xx:grain-de-sail": {
+    "wikidata": { "en": "Q137570852" },
+    "name": { "xx": "Grain de Sail" }
+  },
+  "xx:risenta": { "name": { "xx": "Risenta" } },
+  "xx:pureness": { "name": { "xx": "Pureness" } },
+  "xx:rynkeby": {
+    "name": { "xx": "Rynkeby" },
+    "wikidata": { "en": "Q12334047" }
+  },
+  "xx:nosugar-company": { "name": { "xx": "Nosugar company" } },
+  "xx:løgismose": {
+    "wikidata": { "en": "Q6711394" },
+    "name": { "xx": "Løgismose" }
+  },
+  "xx:alisa": { "name": { "xx": "Alisa" }, "wikidata": { "en": "Q137513962" } },
+  "xx:royal-mediterranean": {
+    "wikidata": { "en": "Q136984611" },
+    "name": { "xx": "Royal Mediterranean" }
+  },
+  "xx:dmbio": { "name": { "xx": "DmBio" } },
+  "xx:milka": { "name": { "xx": "Milka" }, "wikidata": { "en": "Q757388" } },
+  "xx:xxl-nutrition": { "name": { "xx": "XXL Nutrition" } },
+  "xx:jumbo": {
+    "name": { "xx": "JUMBO" },
+    "wikidata": { "en": "Q136824505" },
+    "comment": {
+      "en": "this brand seems only trademarked in the Benelux. It is a multipurpose brand that appears on goods, services, supermarkets and teh holding company."
+    }
+  },
+  "xx:turini": { "name": { "xx": "Turini" } },
+  "xx:valsemøllen": {
+    "wikidata": { "en": "Q127161776" },
+    "name": { "xx": "Valsemøllen" }
+  },
+  "xx:spree": { "name": { "xx": "Spree" }, "wikidata": { "en": "Q7580308" } },
+  "xx:ah-to-go": {
+    "wikidata": { "en": "Q137104297" },
+    "name": { "xx": "AH to go" }
+  },
+  "xx:roze-bunker": { "name": { "xx": "Roze Bunker" } },
+  "xx:carbonell": {
+    "name": { "xx": "Carbonell" },
+    "wikidata": { "en": "Q8262951" }
+  },
+  "xx:plus": { "name": { "xx": "PLUS" }, "wikidata": { "en": "Q136875384" } },
+  "xx:innocent": { "name": { "xx": "Innocent" } },
+  "xx:vivani": { "wikidata": { "en": "Q2528978" }, "name": { "xx": "Vivani" } },
+  "xx:da": { "name": { "xx": "DA" } },
+  "xx:valrhona": {
+    "name": { "xx": "Valrhona" },
+    "wikidata": { "en": "Q928566" }
+  },
+  "xx:euroma": {
+    "name": { "xx": "Euroma" },
+    "wikidata": { "en": "Q137440717" }
+  },
+  "xx:bio": { "name": { "xx": "Bio+" } },
+  "xx:chalo": { "name": { "xx": "Chalo" } },
+  "xx:markant": { "name": { "xx": "Markant" } },
+  "xx:tat": { "name": { "xx": "Tat" }, "wikidata": { "en": "Q20471706" } },
+  "xx:milbona": {
+    "name": { "xx": "Milbona" },
+    "wikidata": { "en": "Q136824789" }
+  },
+  "xx:naturli": { "name": { "xx": "Naturli'" } },
+  "xx:de-zaanse-hoeve": {
+    "name": { "xx": "De Zaanse Hoeve" },
+    "comment": { "en": "Private label of Albert Heijn" }
+  },
+  "xx:eldorado": {
+    "name": { "xx": "Eldorado" },
+    "wikidata": { "en": "Q5324313" }
+  },
+  "xx:quorn": { "name": { "xx": "Quorn" }, "wikidata": { "en": "Q2123676" } },
+  "xx:donny-craves-vegan-koek": {
+    "name": { "xx": "Donny Craves Vegan Koek" },
+    "wikidata": { "en": "Q136929463" }
+  },
+  "xx:lee-kum-kee": {
+    "name": { "zh": "李錦記", "xx": "Lee Kum Kee" },
+    "wikidata": { "en": "Q855533" }
+  },
+  "xx:kryddhuset": { "name": { "xx": "Kryddhuset" } },
+  "xx:domaine-bassac": {
+    "wikidata": { "en": "Q137569515" },
+    "name": { "xx": "Domaine Bassac" }
+  },
+  "xx:naemt": { "name": { "xx": "Næmt" } },
+  "xx:best-foods": {
+    "wikidata": { "en": "Q809061" },
+    "name": { "xx": "Best Foods" }
+  },
+  "xx:oldtimers": {
+    "name": { "xx": "Oldtimers" },
+    "wikidata": { "en": "Q137393008" }
+  },
+  "xx:go-vega": {
+    "name": { "xx": "Go Vega!" },
+    "commemt": { "en": "no trademark found in Benelux or EU" },
+    "wikidata": { "en": "Q137177089" }
+  },
+  "xx:leader-price": { "name": { "xx": "Leader Price" } },
+  "xx:frutesse": {
+    "comment": { "en": "work trademark in Benelux" },
+    "wikidata": { "en": "Q137177165" },
+    "name": { "xx": "Frutesse" }
+  },
+  "xx:haribo": { "name": { "xx": "Haribo" }, "wikidata": { "en": "Q169552" } },
+  "xx:takis": { "name": { "xx": "Takis" }, "wikidata": { "en": "Q107071944" } },
+  "xx:bla-band": {
+    "wikidata": { "en": "Q10431648" },
+    "name": { "xx": "Blå Band" }
+  },
+  "xx:the-bridge": {
+    "wikidata": { "en": "Q137513415" },
+    "name": { "xx": "The Bridge" }
+  },
+  "xx:elix": { "name": { "xx": "Elix" } },
+  "xx:ica-selection": { "name": { "xx": "ICA Selection" } },
+  "xx:ica-basic": { "name": { "xx": "ICA Basic" } },
+  "xx:aubel": { "name": { "xx": "Aubel" } },
+  "xx:dansukker": { "name": { "xx": "Dansukker" } },
+  "xx:boss-coffee": {
+    "wikidata": { "en": "Q4947502" },
+    "name": { "xx": "Boss Coffee" }
+  },
+  "xx:gastrino": { "name": { "xx": "Gastrino" } },
+  "xx:oatly": { "wikidata": { "en": "Q10605824" }, "name": { "xx": "Oatly" } },
+  "xx:vivo": { "name": { "xx": "Vivo" } },
+  "xx:galbusera-zerograno": {
+    "name": { "xx": "Galbusera ZeroGrano" },
+    "wikidata": { "en": "Q137049237" },
+    "comment": { "en": "the EU trademark is expired" }
+  },
+  "xx:ica-i❤️eco": { "name": { "xx": "ICA i❤️eco" } },
+  "xx:sodervidinge": {
+    "name": { "xx": "Södervidinge" },
+    "wikidata": { "en": "Q10688845" }
+  },
+  "xx:dug": { "name": { "xx": "DUG" } },
+  "xx:em-eukal": { "name": { "xx": "Em-eukal" } },
+  "xx:monte-castello": { "name": { "xx": "Monte Castello" } },
+  "xx:dr-oetker": {
+    "wikidata": { "en": "Q137476942" },
+    "name": { "xx": "Dr. Oetker" }
+  },
+  "xx:egelykke": { "name": { "xx": "Egelykke" } },
+  "xx:easiyo": { "name": { "xx": "EasiYo" } },
+  "xx:fazer": { "wikidata": { "en": "Q996907" }, "name": { "xx": "Fazer" } },
+  "xx:frank-le-gourmand": {
+    "name": { "xx": "Frank Le Gourmand" },
+    "wikidata": { "en": "Q137168617" }
+  },
+  "xx:bio-today": {
+    "name": { "xx": "Bio Today" },
+    "wikidata": { "en": "Q136929973" }
+  },
+  "xx:completa": { "name": { "xx": "Completa" } },
+  "xx:propud": { "name": { "xx": "ProPud" } },
+  "xx:svansø": { "name": { "xx": "Svansø" } },
+  "xx:kungsornen": {
+    "name": { "xx": "Kungsörnen" },
+    "wikidata": { "en": "Q6444566" }
+  },
+  "xx:crownfield": { "name": { "xx": "Crownfield" } },
+  "xx:lotus-natur": { "name": { "xx": "Lotus Natur" } },
+  "xx:grafenwalder": {
+    "name": { "xx": "Grafenwalder" },
+    "wikidata": { "en": "Q2181927" }
+  },
+  "xx:oot": { "name": { "xx": "Oot" }, "wikidata": { "en": "Q137036335" } },
+  "xx:progresso": {
+    "wikidata": { "en": "Q136952902" },
+    "name": { "xx": "Progresso" }
+  },
+  "xx:happyvore": {
+    "name": { "xx": "HappyVore" },
+    "wikidata": { "en": "Q137477235" }
+  },
+  "xx:dafgards": {
+    "wikidata": { "en": "Q5618977" },
+    "name": { "xx": "Dafgårds" }
+  },
+  "xx:vitasia": {
+    "wikidata": { "en": "Q137300729" },
+    "name": { "xx": "Vitasia" }
+  },
+  "xx:maitre-coq": { "name": { "xx": "Maître CoQ" } },
+  "xx:kellogg-s": { "name": { "xx": "Kellogg's" } },
+  "xx:tlant": { "name": { "xx": "Tlant" } },
+  "xx:recoltons-l-avenir": { "name": { "xx": "Récoltons l'Avenir" } },
+  "xx:freshona": {
+    "name": { "xx": "Freshona" },
+    "comment": { "en": "Private label of Lidl" },
+    "wikidata": { "en": "Q137168327" }
+  },
+  "xx:dekamarkt": { "name": { "xx": "Dekamarkt" } },
+  "xx:zeina-s": { "name": { "xx": "Zeina's" } },
+  "xx:il-molino-chiavazza": {
+    "wikidata": { "en": "Q137151953" },
+    "comment": { "en": "brand not trademarked in the EU" },
+    "name": { "xx": "Il Molino Chiavazza" }
+  },
+  "xx:nocco": { "wikidata": { "en": "Q97225239" }, "name": { "xx": "NOCCO" } },
+  "xx:trophy-smaakmakers": { "name": { "xx": "Trophy Smaakmakers" } },
+  "xx:coppola-salerno": { "name": { "xx": "Coppola Salerno" } },
+  "xx:ica": { "name": { "xx": "ICA" }, "wikidata": { "en": "Q10516119" } },
+  "xx:ica-asia": { "name": { "xx": "ICA Asia" } },
+  "xx:silvo": { "name": { "xx": "Silvo" }, "wikidata": { "en": "Q137552503" } },
+  "xx:arla": { "wikidata": { "en": "Q674575" }, "name": { "xx": "Arla" } },
+  "xx:koningsvogel": {
+    "wikidata": { "en": "Q137442154" },
+    "name": { "xx": "Koningsvogel" }
+  },
+  "xx:flora": { "name": { "xx": "Flora" }, "wikidata": { "en": "Q5460271" } },
+  "xx:alpro": { "wikidata": { "en": "Q136824379" }, "name": { "xx": "Alpro" } },
+  "xx:estrella": {
+    "name": { "xx": "Estrella" },
+    "wikidata": { "en": "Q6303102" }
+  },
+  "xx:bodylab": {
+    "name": { "xx": "Bodylab" },
+    "wikidata": { "en": "Q27530939" }
+  },
+  "xx:delisse": { "name": { "xx": "Délisse" } },
+  "xx:bjornekulla": {
+    "wikidata": { "en": "Q112757315" },
+    "name": { "xx": "Björnekulla" }
+  },
+  "xx:semper": {
+    "wikidata": { "en": "Q136913700" },
+    "name": { "xx": "Semper" }
+  },
+  "xx:valio": { "wikidata": { "en": "Q2625965" }, "name": { "xx": "Valio" } },
+  "xx:culinea": { "name": { "xx": "Culinea" } },
+  "xx:barebells": { "name": { "xx": "Barebells" } },
+  "xx:deluxe": { "name": { "xx": "Deluxe" } },
+  "xx:valsoia": {
+    "wikidata": { "en": "Q4008334" },
+    "name": { "xx": "Valsoia" }
+  },
+  "xx:marca-guia": { "name": { "xx": "Marca Guia" } },
+  "xx:sonko": { "name": { "xx": "Sonko" } },
+  "xx:zwagerman": {
+    "name": { "xx": "Zwagerman" },
+    "comment": { "en": "Benelux word trademark" },
+    "wikidata": { "en": "Q137104443" }
+  },
+  "xx:andros": {
+    "wikidata": { "en": "Q137477221" },
+    "name": { "xx": "Andros" }
+  },
+  "xx:danerolles": {
+    "name": { "xx": "Danerolles" },
+    "wikidata": { "en": "Q137400053" }
+  },
+  "xx:issawi-bageri": { "name": { "xx": "Issawi Bageri" } },
+  "xx:coop": {
+    "comment": {
+      "en": "This brand is used by different consumer cooperatives around the world. Some disambiguation might be needed."
+    },
+    "wikidata": { "en": "Q115764026" },
+    "name": { "xx": "Coop" }
+  },
+  "xx:baronie": {
+    "wikidata": { "en": "Q137300630" },
+    "name": { "xx": "Baronie" }
+  },
+  "xx:durra": { "name": { "xx": "Durra" } },
+  "xx:salling": {
+    "name": { "xx": "Salling" },
+    "wikidata": { "en": "Q492820" }
+  },
+  "xx:premier": { "name": { "xx": "Premier" } },
+  "xx:yeo-s": { "name": { "xx": "Yeo's" } },
+  "xx:indus": { "name": { "xx": "Indus" } },
+  "xx:no-brand": {
+    "name": { "xx": "No brand" },
+    "comment": {
+      "en": "to be used when absolutely no brand -or proxy brand- can be found on the packaging."
+    }
+  },
+  "xx:jonnie-boer": {
+    "name": { "xx": "Jonnie Boer" },
+    "wikidata": { "en": "Q137440721" }
+  },
+  "xx:søstrene-grene": { "name": { "xx": "Søstrene Grene" } },
+  "xx:tastybasics": {
+    "name": { "xx": "TastyBasics" },
+    "wikidata": { "en": "Q136824528" }
+  },
+  "xx:koti": { "name": { "xx": "KOTI" } },
+  "xx:go-tan": {
+    "wikidata": { "en": "Q137442304" },
+    "name": { "xx": "Go-Tan" }
+  },
+  "xx:aldi": { "name": { "xx": "Aldi" } },
+  "xx:proactiv": {
+    "name": { "xx": "ProActiv" },
+    "wikidata": { "en": "Q136880765" }
+  },
+  "xx:madame-magnifique": {
+    "comment": { "en": "non-trademarked brand of Q137165248" },
+    "name": { "xx": "Madame Magnifique" }
+  },
+  "xx:larnaudie": { "name": { "xx": "Larnaudie" } },
+  "xx:les-pres-d-ariege": {
+    "name": { "xx": "Les Prés d'Ariège" },
+    "wikidata": { "en": "Q137510641" }
+  },
+  "xx:el-taco-truck": { "name": { "xx": "El Taco Truck" } },
+  "xx:matriket": { "name": { "xx": "Matriket" } },
+  "xx:trader-darwin-s": { "name": { "xx": "Trader Darwin's" } },
+  "xx:van-t-huijs": {
+    "wikidata": { "en": "Q137384962" },
+    "name": { "xx": "Van 't Huijs" }
+  },
+  "xx:kockens": {
+    "wikidata": { "en": "Q10546877" },
+    "name": { "xx": "Kockens" }
+  },
+  "xx:solevita": { "name": { "xx": "Solevita" } },
+  "xx:salta-kvarn": {
+    "name": { "xx": "Saltå kvarn" },
+    "wikidata": { "en": "Q10660794" }
+  },
+  "xx:mutti": { "wikidata": { "en": "Q16580706" }, "name": { "xx": "Mutti" } },
+  "xx:choice": { "name": { "xx": "Choice" } },
+  "xx:tuana": { "name": { "xx": "Tuana" }, "wikidata": { "en": "Q136933479" } },
+  "xx:de-vleeschmeesters": {
+    "name": { "xx": "De Vleeschmeesters" },
+    "wikidata": { "en": "Q136842208" }
+  },
+  "xx:maggi": { "name": { "xx": "Maggi" }, "wikidata": { "en": "Q688424" } },
+  "xx:johma": { "wikidata": { "en": "Q137400555" }, "name": { "xx": "Johma" } },
+  "xx:rydbergs": { "name": { "xx": "Rydbergs" } },
+  "xx:tuc": { "name": { "xx": "Tuc" } },
+  "xx:aroy-d": {
+    "name": { "xx": "Aroy-D" },
+    "wikidata": { "en": "Q137460581" }
+  },
+  "xx:barkleys": {
+    "wikidata": { "en": "Q136929948" },
+    "name": { "xx": "Barkleys" }
+  },
+  "xx:kiekeboe": {
+    "wikidata": { "en": "Q136880977" },
+    "name": { "xx": "Kiekeboe" }
+  },
+  "xx:la-vie-est-belle": {
+    "name": { "xx": "La vie est belle" },
+    "wikidata": { "en": "Q137440477" }
+  },
+  "xx:tastes-good": {
+    "wikidata": { "en": "Q137589623" },
+    "name": { "xx": "Tastes Good" }
+  },
+  "xx:almhof-hoekje": { "name": { "xx": "Almhof hoekje" } },
+  "xx:bonne-maman": { "name": { "xx": "Bonne Maman" } },
+  "xx:vemondo": {
+    "wikidata": { "en": "Q136841178" },
+    "name": { "xx": "Vemondo" }
+  },
+  "xx:beillevaire": {
+    "name": { "xx": "Beillevaire" },
+    "wikidata": { "en": "Q137478612" }
+  },
+  "xx:diamant": { "name": { "xx": "Diamant" } },
+  "xx:almhof": {
+    "name": { "xx": "Almhof" },
+    "wikidata": { "en": "Q136825392" }
+  },
+  "xx:maza": { "name": { "xx": "Maza" }, "wikidata": { "en": "Q136912666" } },
+  "xx:hunkar": {
+    "wikidata": { "en": "Q137440806" },
+    "name": { "xx": "Hünkar" }
+  },
+  "xx:lyttos": { "name": { "xx": "Lyttos" } },
+  "xx:thise": { "name": { "xx": "Thise" } },
+  "xx:emmi": { "name": { "xx": "Emmi" }, "wikidata": { "en": "Q136824621" } },
+  "xx:anglamark": {
+    "wikidata": { "en": "Q65229572" },
+    "name": { "xx": "Änglamark" }
+  },
+  "xx:roosterz-co": { "name": { "xx": "Roosterz & Co" } },
+  "xx:zeta": { "name": { "xx": "Zeta" }, "wikidata": { "en": "Q10724505" } },
+  "xx:bio-village": { "name": { "xx": "Bio Village" } },
+  "xx:loka": { "wikidata": { "en": "Q10568903" }, "name": { "xx": "Loka" } },
+  "xx:sainsbury-s": { "name": { "xx": "Sainsbury's" } },
+  "xx:max": { "name": { "xx": "Max" }, "wikidata": { "en": "Q1912172" } },
+  "xx:garant": { "name": { "xx": "Garant" } },
+  "xx:mcvitie-s": { "name": { "xx": "McVitie's" } },
+  "xx:oddlygood": { "name": { "xx": "Oddlygood" } },
+  "xx:dave-jon-s": {
+    "wikidata": { "en": "Q134125853" },
+    "name": { "xx": "Dave & Jon's" }
+  },
+  "xx:planti": { "name": { "xx": "Planti" } },
+  "xx:favorina": {
+    "name": { "xx": "Favorina" },
+    "wikidata": { "en": "Q137149537" },
+    "comment": { "en": "Private brand of Lidl for pralines" }
+  },
+  "xx:knorr": { "name": { "xx": "Knorr" }, "wikidata": { "en": "Q136824598" } },
+  "xx:anna-clara-s": { "name": { "xx": "Anna & Clara's" } },
+  "xx:premieur": { "name": { "xx": "Premieur" } },
+  "xx:felix": { "name": { "xx": "Felix" } },
+  "xx:malaco": { "name": { "xx": "Malaco" }, "wikidata": { "en": "Q4346282" } },
+  "xx:abbot-kinney-s": {
+    "wikidata": { "en": "Q136824393" },
+    "name": { "xx": "Abbot Kinney's" }
+  },
+  "xx:kit-kat": {
+    "wikidata": { "en": "Q367251" },
+    "name": { "xx": "Kit Kat" }
+  },
+  "xx:green-star": { "name": { "xx": "Green Star" } },
+  "xx:purasana": { "name": { "xx": "Purasana" } },
+  "xx:jimmy-s": { "name": { "xx": "Jimmy's" } },
+  "xx:lotus": { "wikidata": { "en": "Q590113" }, "name": { "xx": "Lotus" } },
+  "xx:sum-sam": { "name": { "xx": "Sum & Sam" } },
+  "xx:1de-beste": {
+    "name": { "xx": "1de Beste" },
+    "wikidata": { "en": "Q136929195" }
+  },
+  "xx:flevosap": {
+    "wikidata": { "en": "Q137177197" },
+    "name": { "xx": "Flevosap" }
+  },
+  "xx:vivera": { "wikidata": { "en": "Q2492388" }, "name": { "xx": "Vivera" } },
+  "xx:lay-s": { "wikidata": { "en": "Q136914164" }, "name": { "xx": "Lay's" } },
+  "xx:nestle": { "name": { "xx": "Nestlé" }, "wikidata": { "en": "Q160746" } },
+  "xx:royal": { "name": { "xx": "Royal" } },
+  "xx:snack-fan": { "name": { "xx": "Snack Fan" } },
+  "xx:bertolli": { "name": { "xx": "Bertolli" } },
+  "xx:hellmann-s": {
+    "name": { "xx": "Hellmann's" },
+    "wikidata": { "en": "Q809061" }
+  },
+  "xx:daelmans": {
+    "name": { "xx": "Daelmans" },
+    "wikidate": { "en": "Q136842173" }
+  },
+  "xx:kleinste-soepfabriek": { "name": { "xx": "Kleinste Soepfabriek" } },
+  "xx:delief": { "name": { "xx": "Delief" } },
+  "xx:bonarea": { "name": { "xx": "BonÀrea" } },
+  "xx:rice-krispies": { "name": { "xx": "Rice Krispies" } },
+  "xx:banderos": { "name": { "xx": "Banderos" } },
+  "xx:sojade": {
+    "name": { "xx": "Sojade" },
+    "wikidata": { "en": "Q137211136" }
+  },
+  "xx:driscoll-s": {
+    "name": { "xx": "Driscoll's" },
+    "wikidata": { "en": "Q136955368" }
+  },
+  "xx:van-delft": {
+    "wikidata": { "en": "Q136952141" },
+    "name": { "xx": "Van Delft" }
+  },
+  "xx:triumf-glass": {
+    "wikidata": { "en": "Q10704719" },
+    "name": { "xx": "Triumf Glass" }
+  },
+  "xx:grøn-balance": {
+    "wikidata": { "en": "Q65410727" },
+    "name": { "xx": "Grøn Balance" }
+  },
+  "xx:patak-s": {
+    "wikidata": { "en": "Q137459252" },
+    "name": { "xx": "Patak's" }
+  },
+  "xx:fresh-easy": {
+    "name": { "xx": "Fresh & easy" },
+    "wikidata": { "en": "Q137568908" }
+  },
+  "xx:svenskt-kosttillskott": { "name": { "xx": "Svenskt Kosttillskott" } },
+  "xx:dazzley": { "name": { "xx": "Dazzley" } },
+  "xx:signature-foods": {
+    "name": { "xx": "Signature Foods" },
+    "web": { "en": "en: www.signaturefoods.com" }
+  },
+  "xx:zaanlander": { "name": { "xx": "Zaanlander" } },
+  "xx:albert-heijn": {
+    "name": { "xx": "Albert Heijn" },
+    "wikidata": { "en": "Q136838017" }
+  },
+  "xx:anamma": { "name": { "xx": "Anamma" } },
+  "xx:isey": { "name": { "xx": "Ísey" }, "wikidata": { "en": "Q16422529" } },
+  "xx:takovo": {
+    "wikidata": { "en": "Q58177342" },
+    "name": { "xx": "Takovo" }
+  },
+  "xx:urtekram": {
+    "wikidata": { "en": "Q12340334" },
+    "name": { "xx": "Urtekram" }
+  },
+  "xx:fontana": { "name": { "xx": "Fontana" } },
+  "xx:leerdammer": {
+    "wikidata": { "en": "Q137322826" },
+    "name": { "xx": "Leerdammer" }
+  },
+  "xx:ikea": { "wikidata": { "en": "Q54078" }, "name": { "xx": "IKEA" } },
+  "xx:valsølille": { "name": { "xx": "Valsølille" } },
+  "xx:halsans-kok": { "name": { "xx": "Hälsans Kök" } },
+  "xx:chokay": {
+    "name": { "xx": "Chokay" },
+    "wikidata": { "en": "Q136951951" }
+  },
+  "xx:swedish-supplements": { "name": { "xx": "Swedish Supplements" } },
+  "xx:wolf": { "name": { "xx": "Wolf" }, "wikidata": { "en": "Q136841107" } },
+  "xx:tokapi": { "name": { "xx": "Tokapi" } },
+  "xx:trader-joe-s": {
+    "name": { "xx": "Trader Joe's" },
+    "wikidata": { "en": "Q136841248" }
+  },
+  "xx:heinz": { "name": { "xx": "Heinz" } },
+  "xx:nature-s-pride": { "name": { "xx": "Nature's Pride" } },
+  "xx:petti": { "name": { "xx": "Petti" } },
+  "xx:움트리": { "name": { "xx": "움트리" } },
+  "xx:chaque-jour-sans-gluten": { "name": { "xx": "Chaque Jour Sans Gluten" } }
+}

@@ -45,11 +45,15 @@ STYLES = {
     # --- Títulos ---
     "h1": { "family": FAMILIES["brand"], "size": 48, "weight": "normal" },
     "h2": { "family": FAMILIES["brand"], "size": 32, "weight": "normal" },
+    "h3": { "family": FAMILIES["brand"], "size": 24, "weight": "normal" },
+    "h4": { "family": FAMILIES["brand"], "size": 18, "weight": "normal" },
+    "h5": { "family": FAMILIES["brand"], "size": 14, "weight": "normal" },
+    "h6": { "family": FAMILIES["brand"], "size": 12, "weight": "normal" },
     
     # --- UI General ---
-    "body":      { "family": FAMILIES["ui"], "size": 14, "weight": "normal" },
-    "body_bold": { "family": FAMILIES["ui"], "size": 14, "weight": "bold" },
-    "button":    { "family": FAMILIES["ui"], "size": 10, "weight": "bold" },
+    "body":      { "family": FAMILIES["ui"], "size": 12, "weight": "normal" },
+    "body_bold": { "family": FAMILIES["ui"], "size": 12, "weight": "bold" },
+    "button":    { "family": FAMILIES["ui"], "size": 12, "weight": "bold" },
     
     # --- Datos / Inputs ---
     "input":        { "family": FAMILIES["data"], "size": 10, "weight": "normal" },

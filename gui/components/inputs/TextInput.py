@@ -1,105 +1,186 @@
-from gui.theme.app_pallete import get_app_color
 import tkinter as tk
-from gui.theme.inputs import INPUT_THEMES
+from PIL import Image, ImageDraw, ImageTk
+from gui.theme.app_pallete import get_app_color
+from gui.theme.inputs import get_input_theme
+from gui.theme.fonts import get_font
 
-
-def TextInput(parent, placeholder="", width=200, variant="primary"):
+def TextField(parent, placeholder="", width=200, variant="primary", bg_parent=None, ui_mode="light", label=None):
     """
-    Functional Text Input with custom styling and state management.
-
-    Args:
-        placeholder (str): Text shown when empty.
-        variant (str): Palette key for the focus highlight color.
+    Input de texto estilo MD3 renderizado con Pillow.
+    Soporta bordes redondeados y modo oscuro.
     """
+    
+    # 1. Obtener Tema Dinámico
+    theme = get_input_theme(variant, mode=ui_mode)
+    
+    def resolve(v):
+        return get_app_color(v[0], v[1]) if isinstance(v, (tuple, list)) else v
 
-    theme = INPUT_THEMES.get(variant, INPUT_THEMES["primary"])
+    # Resolver colores
+    colors = {
+        "bg_idle": resolve(theme["bg_idle"]),
+        "bg_focus": resolve(theme["bg_focus"]),
+        "border_idle": resolve(theme["border_idle"]),
+        "border_focus": resolve(theme["border_focus"]),
+        "text": resolve(theme["text_color"]),
+        "placeholder": resolve(theme["placeholder"]),
+        "cursor": resolve(theme["cursor"]),
+        "parent_bg": bg_parent if bg_parent else resolve(("neutral", 0)) # Fallback seguro
+    }
+    
+    # Si no pasaron bg_parent, intentamos leerlo del widget padre
+    if not bg_parent:
+        try: colors["parent_bg"] = parent.cget("bg")
+        except: pass
 
-    def resolve_color(value):
-        if isinstance(value, (tuple, list)) and len(value) == 2:
-            return get_app_color(value[0], value[1])
-        return value
+    height = theme["height"]
+    radius = theme["radius"]
 
+    # 2. Estructura Principal
+    # Si hay label, usamos un Frame contenedor, si no, devolvemos el Canvas directo
+    if label:
+        container = tk.Frame(parent, bg=colors["parent_bg"])
+        lbl = tk.Label(container, text=label, bg=colors["parent_bg"], fg=colors["text"], font=get_font("caption"))
+        lbl.pack(anchor="w", pady=(0, 4))
+    else:
+        container = None # No container needed logic later
+
+    # 3. Canvas del Input
+    # Este será el widget principal si no hay label
+    target_parent = container if container else parent
+    
+    canvas = tk.Canvas(
+        target_parent, 
+        width=width, 
+        height=height, 
+        bg=colors["parent_bg"], 
+        highlightthickness=0, 
+        cursor="xterm"
+    )
+    if container: canvas.pack()
+
+    # 4. Estado Interno
     state = {
         "focused": False,
-        "is_placeholder_on": True if placeholder else False,
-        "bg_idle": resolve_color(theme["bg_idle"]),
-        "bg_focus": resolve_color(theme["bg_focus"]),
-        "border_idle": resolve_color(theme["border_idle"]),
-        "border_focus": resolve_color(theme["border_focus"]),
-        "text_main": resolve_color(theme["text_color"]),
-        "text_placeholder": resolve_color(theme["placeholder"]),
+        "is_placeholder": True if placeholder else False,
+        "image_cache": {}
     }
 
-    container = tk.Frame(
-        parent, bg=state["border_idle"], width=width, height=theme["height"]
-    )
-    container.pack_propagate(False)
+    # 5. Motor de Renderizado (Draw)
+    def draw():
+        canvas.delete("bg_shape")
+        
+        # Determinar colores actuales
+        is_focus = state["focused"]
+        current_bg = colors["bg_focus"] if is_focus else colors["bg_idle"]
+        current_border = colors["border_focus"] if is_focus else colors["border_idle"]
+        border_width = 2 if is_focus else 1 # Borde más grueso al enfocar
 
-    inner_padding = tk.Frame(container, bg=state["bg_idle"])
-    inner_padding.pack(fill="both", expand=True, padx=1, pady=1)
+        cache_key = (width, height, radius, current_bg, current_border, border_width, colors["parent_bg"])
+        
+        if cache_key not in state["image_cache"]:
+            scale = 4
+            W, H, R = width * scale, height * scale, radius * scale
+            
+            img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            draw_ctx = ImageDraw.Draw(img)
+            
+            # Dibujar rectángulo redondeado con borde
+            draw_ctx.rounded_rectangle(
+                (0, 0, W-1, H-1), 
+                radius=R, 
+                fill=current_bg, 
+                outline=current_border, 
+                width=border_width * scale
+            )
+            
+            # Resize y Blending
+            final_img = img.resize((width, height), Image.LANCZOS)
+            bg_layer = Image.new("RGBA", (width, height), colors["parent_bg"])
+            bg_layer.paste(final_img, (0, 0), final_img)
+            
+            state["image_cache"][cache_key] = ImageTk.PhotoImage(bg_layer)
+        
+        tk_img = state["image_cache"][cache_key]
+        canvas.create_image(width/2, height/2, image=tk_img, tags="bg_shape")
+        canvas.image_ref = tk_img 
+        canvas.tag_lower("bg_shape")
+        
+        # Actualizar color del Entry (si cambia el fondo al enfocar)
+        entry.config(bg=current_bg)
 
+    # 6. Widget Entry Nativo
+    # Flota dentro del canvas
     entry = tk.Entry(
-        inner_padding,
-        bg=state["bg_idle"],
-        fg=state["text_placeholder"],
-        font=("Segoe UI", 10),
+        canvas,
+        bd=0,
+        font=get_font("body"),
+        highlightthickness=0,
         relief="flat",
-        insertbackground=state["text_main"],
+        bg=colors["bg_idle"], # Inicial
+        fg=colors["placeholder"], # Inicial
+        insertbackground=colors["cursor"] # Color del cursor
     )
-    entry.pack(fill="both", expand=True, padx=8, pady=5)
+    
+    # Padding horizontal (x=10)
+    canvas.create_window(10, height/2, window=entry, width=width-20, height=height-8, anchor="w")
 
-    def update_visuals():
-
-        border_col = state["border_focus"] if state["focused"] else state["border_idle"]
-        container.configure(bg=border_col)
-
-        bg_col = state["bg_focus"] if state["focused"] else state["bg_idle"]
-        inner_padding.configure(bg=bg_col)
-        entry.configure(bg=bg_col)
-
+    # 7. Lógica de Placeholder y Eventos
     def on_focus_in(e):
         state["focused"] = True
-
-        if state["is_placeholder_on"]:
+        if state["is_placeholder"]:
             entry.delete(0, "end")
-            entry.configure(fg=state["text_main"])
-            state["is_placeholder_on"] = False
-
-        update_visuals()
+            entry.config(fg=colors["text"])
+            state["is_placeholder"] = False
+        draw()
 
     def on_focus_out(e):
         state["focused"] = False
-
         if not entry.get():
             entry.insert(0, placeholder)
-            entry.configure(fg=state["text_placeholder"])
-            state["is_placeholder_on"] = True
+            entry.config(fg=colors["placeholder"])
+            state["is_placeholder"] = True
+        draw()
 
-        update_visuals()
-
+    # Init
     if placeholder:
         entry.insert(0, placeholder)
+        entry.config(fg=colors["placeholder"])
+    else:
+        state["is_placeholder"] = False
+        entry.config(fg=colors["text"])
 
+    draw() # Primer pintado
+
+    # Bindings
+    entry.bind("<FocusIn>", on_focus_in)
+    entry.bind("<FocusOut>", on_focus_out)
+    canvas.bind("<Button-1>", lambda e: entry.focus_set())
+
+    # 8. Métodos Públicos
     def get_value():
-        """Returns None if placeholder is active, otherwise the text."""
-        if state["is_placeholder_on"]:
-            return ""
+        if state["is_placeholder"]: return ""
         return entry.get()
 
     def set_value(text):
         entry.delete(0, "end")
         if text:
             entry.insert(0, text)
-            entry.configure(fg=state["text_main"])
-            state["is_placeholder_on"] = False
+            entry.config(fg=colors["text"])
+            state["is_placeholder"] = False
         else:
-            on_focus_out(None)
+            on_focus_out(None) # Restaurar placeholder
 
-    container.get_value = get_value
-    container.set_value = set_value
-    container.entry_widget = entry
+    # Exponer métodos en el widget contenedor (Container si hay label, Canvas si no)
+    main_widget = container if container else canvas
+    
+    main_widget.get_value = get_value
+    main_widget.set_value = set_value
+    main_widget.entry_widget = entry # Acceso directo por si acaso
+    
+    # Método grid/pack proxy si usamos container
+    if container:
+        # Si devolvemos un Frame contenedor, aseguramos que grid/pack funcionen sobre él
+        pass 
 
-    entry.bind("<FocusIn>", on_focus_in)
-    entry.bind("<FocusOut>", on_focus_out)
-
-    return container
+    return main_widget

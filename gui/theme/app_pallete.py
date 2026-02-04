@@ -1,152 +1,73 @@
-APP_PALETTE = {
-    "primary": {
-        0: "#ffffff",
-        25: "#f2f5f8",
-        50: "#e6ebf0",
-        75: "#ced9e3",
-        100: "#b5c6d5",
-        150: "#91abc2",
-        200: "#6d91af",
-        300: "#4a769c",
-        400: "#2e5b82",
-        "Basic": "#163c56",
-        600: "#163149",
-        700: "#112538",
-        750: "#0d1d2b",
-        800: "#09141f",
-        850: "#060d14",
-        900: "#02060a",
-        925: "#000000",
-        950: "#000000",
-        975: "#000000",
-        1000: "#000000",
-    },
-    "secondary": {
-        0: "#ffffff",
-        25: "#f6fbf3",
-        50: "#edf7e8",
-        75: "#dbefe1",
-        100: "#cbe7cd",
-        150: "#b4dcb8",
-        200: "#9cd1a2",
-        300: "#84c68d",
-        400: "#7ec05e",
-        "Basic": "#72b14d",
-        600: "#5f9435",
-        700: "#4b7529",
-        750: "#416624",
-        800: "#37571e",
-        850: "#2d4719",
-        900: "#233813",
-        925: "#1a290e",
-        950: "#101a09",
-        975: "#000000",
-        1000: "#000000",
-    },
-    "neutral": {
-        0: "#ffffff",
-        25: "#f6f7f7",
-        50: "#eeefee",
-        75: "#e5e6e6",
-        100: "#dddede",
-        150: "#cccecd",
-        200: "#bbbebd",
-        300: "#999d9b",
-        400: "#777d7a",
-        "Basic": "#8b9cac",
-        600: "#444a47",
-        700: "#333735",
-        750: "#2b2e2c",
-        800: "#222524",
-        850: "#1a1c1b",
-        900: "#111212",
-        925: "#0d0e0d",
-        950: "#090909",
-        975: "#040504",
-        1000: "#000000",
-    },
-    "warning": {
-        0: "#ffffff",
-        25: "#fefaf7",
-        50: "#fef4ee",
-        75: "#fdefe6",
-        100: "#fde9de",
-        150: "#fcdecd",
-        200: "#fbd3bc",
-        300: "#f8be9b",
-        400: "#f6a879",
-        "Basic": "#f49258",
-        600: "#c37546",
-        700: "#925835",
-        750: "#7a492c",
-        800: "#623a23",
-        850: "#492c1a",
-        900: "#311d12",
-        925: "#25160d",
-        950: "#180f09",
-        975: "#0c0704",
-        1000: "#000000",
-    },
-    "error": {
-        0: "#ffffff",
-        25: "#fdf5f5",
-        50: "#fbebeb",
-        75: "#f9e1e1",
-        100: "#f8d7d7",
-        150: "#f4c3c3",
-        200: "#f0afaf",
-        300: "#e98787",
-        400: "#e15f5f",
-        "Basic": "#da3737",
-        600: "#ae2c2c",
-        700: "#832121",
-        750: "#6d1c1c",
-        800: "#571616",
-        850: "#411111",
-        900: "#2c0b0b",
-        925: "#210808",
-        950: "#160606",
-        975: "#0b0303",
-        1000: "#000000",
-    },
-    "success": {
-        0: "#ffffff",
-        25: "#f6fdf8",
-        50: "#eefbf0",
-        75: "#e5f9e9",
-        100: "#ddf8e1",
-        150: "#ccf4d3",
-        200: "#bbf0c4",
-        300: "#99e9a6",
-        400: "#77e189",
-        "Basic": "#55da6b",
-        600: "#44ae56",
-        700: "#338340",
-        750: "#2b6d35",
-        800: "#22572b",
-        850: "#1a4120",
-        900: "#112c15",
-        925: "#0d2110",
-        950: "#09160b",
-        975: "#040b05",
-        1000: "#000000",
-    },
+"""
+app_pallete.py
+Generador dinámico de paletas de colores.
+"""
+
+def hex_to_rgb(hex_color):
+    hex_color = hex_color.lstrip('#')
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+def rgb_to_hex(rgb):
+    return '#{:02x}{:02x}{:02x}'.format(*[int(c) for c in rgb])
+
+def mix_colors(color1, color2, weight):
+    return tuple(c1 * (1 - weight) + c2 * weight for c1, c2 in zip(color1, color2))
+
+def generate_palette(base_hex):
+    base_rgb = hex_to_rgb(base_hex)
+    white_rgb = (255, 255, 255)
+    black_rgb = (0, 0, 0)
+    
+    palette = {}
+    keys = [0, 25, 50, 75, 100, 150, 200, 300, 400, "Basic", 600, 700, 750, 800, 850, 900, 925, 950, 975, 1000]
+
+    for key in keys:
+        if key == "Basic":
+            palette["Basic"] = base_hex
+            palette["main"] = base_hex # <--- FIX: Alias para evitar KeyError 'main'
+            continue
+        
+        numeric_value = key
+        if numeric_value == 0:
+            palette[key] = "#ffffff"
+        elif numeric_value == 1000:
+            palette[key] = "#000000"
+        elif numeric_value < 500:
+            weight = numeric_value / 500.0
+            mixed_rgb = mix_colors(white_rgb, base_rgb, weight)
+            palette[key] = rgb_to_hex(mixed_rgb)
+        else: 
+            weight = (numeric_value - 500) / 500.0
+            mixed_rgb = mix_colors(base_rgb, black_rgb, weight)
+            palette[key] = rgb_to_hex(mixed_rgb)
+
+    return palette
+
+# --- DEFINICIÓN DE COLORES BASE ---
+BASE_COLORS = {
+    "primary":   "#163c56",
+    "secondary": "#72b14d",
+    "neutral":   "#8b9cac",
+    "warning":   "#f49258",
+    "error":     "#da3737",
+    "success":   "#55da6b",
 }
 
+# Generar paletas base
+APP_PALETTE = {cat: generate_palette(col) for cat, col in BASE_COLORS.items()}
+
+# --- FIX: AGREGAR MANUALMENTE TEMAS EXTRA ---
+# Esto es lo que faltaba o fallaba. Definimos el tema oscuro y surface explícitamente.
+APP_PALETTE["surface"] = generate_palette("#ffffff") 
+APP_PALETTE["dark"] = generate_palette("#1e1e1e") # Gris oscuro estándar para fondos
 
 def get_app_color(category, shade):
-    """
-    Extrae un color de la paleta.
-    Uso: get_app_color("primary", 100) -> "#cdf6e5"
-    """
     category = category.lower().strip()
-
     if isinstance(shade, str) and shade.lower() != "basic":
-        try:
-            shade = int(shade)
-        except ValueError:
-            pass
+        try: shade = int(shade)
+        except ValueError: pass
+            
     try:
         return APP_PALETTE[category][shade]
     except KeyError:
-        return f"Color no encontrado: {category} {shade}"
+        return "#ff00ff" # Debug color
