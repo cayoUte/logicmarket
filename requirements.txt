@@ -4,3 +4,4 @@ reportlab
 tkextrafont
 aiohttp
 resvg-py
+requests

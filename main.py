@@ -2,6 +2,7 @@ import tkinter as tk
 
 # --- GUI IMPORTS ---
 from gui.components.layouts.PersistentDrawer import PersistentDrawer
+from gui.pages.InventoryPage import InventoryPage
 from gui.pages.ImporterPage import ImporterPage
 from gui.pages.HomePage import HomePage
 from gui.components.AppBar import AppBar
@@ -102,8 +103,10 @@ def main():
         # IMPORTANTE: Al ejecutarse el constructor AHORA, leerá el color actual del store
         page_constructor = routes.get(page_id)
         if page_constructor:
+            if page_id == "inventory":
+                new_page = InventoryPage(content_area, store_funcs)
             # Factory pattern según la página
-            if page_id == "importer":
+            elif page_id == "importer":
                 new_page = ImporterPage(content_area, store_funcs)
             elif page_id == "home":
                 new_page = HomePage(content_area, on_navigate=load_page)
