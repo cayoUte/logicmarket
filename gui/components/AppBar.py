@@ -4,17 +4,13 @@ from gui.theme.fonts import get_font
 from gui.utils import get_circle_avatar 
 from store.selectors import select_current_colors 
 from store.slices.theme_slice import theme_actions 
+# IMPORTAR ACCIONES DE INVENTARIO
+from store.slices.inventory_slice import actions as inventory_actions 
 
 def AppBar(parent, store_funcs, user_data):
-    """
-    AppBar Reactiva con soporte para cambio de tema dinámico.
-    """
     dispatch = store_funcs["dispatch"]
     get_state = store_funcs["get_state"]
 
-    # --- ESTADO INTERNO DEL COMPONENTE ---
-    # Guardamos la página y título actual para poder re-renderizar
-    # el centro (Search vs Headline) cuando cambie el tema.
     internal_state = {
         "current_page": "dashboard",
         "current_title": "Inicio"
@@ -71,32 +67,44 @@ def AppBar(parent, store_funcs, user_data):
     # ==========================================
 
     def render_center_content(colors):
-        """Redibuja el contenido central (Search o Texto) con los colores nuevos"""
         surface = colors["surface"]
         text = colors["text"]
         input_bg = colors["input_bg"]
         
-        # Limpiar widgets antiguos
         for w in center_frame.winfo_children(): w.destroy()
 
         page_id = internal_state["current_page"]
         
+        # Solo mostramos el buscador en páginas relevantes
         if page_id in ["importer", "inventory"]:
-            # RENDER SEARCHBAR
-            # SearchInput usará el bg de center_frame para los bordes
+            
             search_canvas, search_entry = SearchInput(
                 center_frame,
                 placeholder="Buscar productos...",
                 width=480, height=44, radius=22,
-                bg_color=input_bg, # Color de la píldora
+                bg_color=input_bg,
                 text_color=text
             )
             search_canvas.pack(anchor="center")
             
-            # Binding Enter (Ejemplo)
-            search_entry.bind("<Return>", lambda e: print(f"Search: {search_entry.get()}"))
+            # --- NUEVO: LÓGICA DE FILTRADO EN TIEMPO REAL ---
+            def on_search_change(event):
+                query = search_entry.get()
+                # Despachamos al store global
+                dispatch(inventory_actions["setSearchParams"]({"query": query}))
+
+            # Vinculamos al soltar tecla para efecto inmediato
+            search_entry.bind("<KeyRelease>", on_search_change)
+            
+            # Restaurar valor previo si existe en el store (para que no se borre al cambiar tema)
+            current_params = get_state()["inventory"].get("search_params", {})
+            if current_params.get("query"):
+                search_entry.delete(0, tk.END)
+                search_entry.insert(0, current_params["query"])
+                search_entry.config(fg=text) # Quitar color de placeholder
+
         else:
-            # RENDER HEADLINE
+            # HEADLINE
             tk.Label(center_frame, text=internal_state["current_title"], 
                      bg=surface, fg=text, font=get_font("h5")).pack(anchor="center")
 

@@ -1,54 +1,133 @@
 from store.utils.utils import create_slice
 
-# --- MINI REDUCERS ---
+# ==========================================
+# 1. MINI REDUCERS (Lógica Pura)
+# ==========================================
 
 def set_search_params(state, payload):
-    # Guardamos qué buscó el usuario para poder "cargar más" después si quisiéramos
+    """
+    Actualiza el texto del buscador global (AppBar).
+    InventoryPage usa esto para filtrar la tabla localmente.
+    payload: {"query": "texto"}
+    """
     return {**state, "search_params": payload}
 
-def search_success(state, payload):
-    # payload: lista de 50-100 productos
-    # Al buscar de nuevo, reseteamos la pagina a la 1
+def search_api_success(state, payload):
+    """
+    Guarda los resultados de OpenFoodFacts (ImporterPage).
+    payload: Lista de productos de la API.
+    """
     return {
         **state, 
         "resultados_api": payload, 
         "loading": False,
-        "ui_page": 1 
+        "ui_page": 1  # Reseteamos paginación de la API
     }
-
-def change_page(state, payload):
-    # payload: +1 (siguiente) o -1 (anterior)
-    new_page = state["ui_page"] + payload
-    # Evitamos ir a página 0
-    if new_page < 1: new_page = 1
+def create_product(state, payload):
+    """
+    Crea un producto manualmente y lo agrega al inicio.
+    payload: Diccionario del producto nuevo.
+    """
+    new_product = payload
+    # Generar un ID temporal si no tiene código (opcional)
+    if not new_product.get("code"):
+        import time
+        new_product["code"] = f"MAN-{int(time.time())}"
+        
+    # Insertar al inicio de la lista
+    new_list = [new_product] + state["inventario"]
     
-    # (Opcional) Podríamos validar max_page aquí si tuviéramos el total
+    return {**state, "inventario": new_list}
+
+def change_api_page(state, payload):
+    """
+    Cambia la página de resultados de la API (ImporterPage).
+    payload: +1 o -1
+    """
+    new_page = state["ui_page"] + payload
+    if new_page < 1: new_page = 1
     return {**state, "ui_page": new_page}
 
-# --- INITIAL STATE MEJORADO ---
+# --- NUEVAS ACCIONES CRUD ---
+
+def delete_product(state, payload):
+    """
+    Elimina un producto del inventario local.
+    payload: 'code' (str) del producto a borrar.
+    """
+    code_to_delete = payload
+    current_list = state["inventario"]
+    
+    # Filtramos la lista excluyendo el código recibido
+    new_list = [p for p in current_list if p.get("code") != code_to_delete]
+    
+    return {**state, "inventario": new_list}
+
+def update_product(state, payload):
+    """
+    Actualiza un producto existente.
+    payload: Diccionario completo del producto modificado.
+    """
+    updated_item = payload
+    target_code = updated_item.get("code")
+    current_list = state["inventario"]
+    
+    # Recorremos y reemplazamos solo el que coincida
+    new_list = [
+        updated_item if p.get("code") == target_code else p
+        for p in current_list
+    ]
+    
+    return {**state, "inventario": new_list}
+
+def import_batch(state, payload):
+    """
+    Agrega nuevos productos desde el importador.
+    payload: Lista de productos nuevos.
+    """
+    # Evitar duplicados (opcional, pero recomendado)
+    existing_codes = {p.get("code") for p in state["inventario"]}
+    new_unique_items = [p for p in payload if p.get("code") not in existing_codes]
+    
+    return { 
+        **state, 
+        "inventario": state["inventario"] + new_unique_items, 
+        "resultados_api": [] # Limpiamos la búsqueda API al importar para dar feedback visual
+    }
+
+# ==========================================
+# 2. INITIAL STATE
+# ==========================================
 initial_state = {
-    "inventario": [],
-    "resultados_api": [], # Aquí viven los 100 productos cacheados
+    "inventario": [],       # Tu base de datos local (se guarda en disco)
+    "resultados_api": [],   # Caché temporal de OpenFoodFacts
     "loading": False,
-    "search_params": {},
-    "ui_page": 1,         # Página actual de la TABLA
-    "ui_page_size": 10    # Filas por página en la TABLA
+    "search_params": {},    # Estado del buscador del AppBar
+    "ui_page": 1,           # Paginación actual del Importador
+    "ui_page_size": 10 
 }
 
+# ==========================================
+# 3. SLICE CREATION
+# ==========================================
 inventory_reducer, actions = create_slice(
     name="inventory",
     initial_state=initial_state,
     reducers={
+        # Utilidades UI
         "setLoading": lambda s, p: {**s, "loading": p},
-        "searchSuccess": search_success,
         "setSearchParams": set_search_params,
-        "changePage": change_page,
+        
+        # Lógica API (Importer)
+        "searchSuccess": search_api_success,
+        "changePage": change_api_page,
         "clearSearch": lambda s, _: {**s, "resultados_api": [], "ui_page": 1},
-        "setInventory": lambda s, p: {**s, "inventario": p},                
-        "importBatch": lambda s, p: { 
-            **s, 
-            "inventario": s["inventario"] + p, 
-            "resultados_api": [] # Limpiamos la búsqueda al importar
-        } 
+        
+        # Lógica CRUD (Inventory)
+        "setInventory": lambda s, p: {**s, "inventario": p}, # Carga inicial desde disco
+        "importBatch": import_batch,
+        "createProduct": create_product,
+        "deleteProduct": delete_product,  # <--- NUEVO
+        "updateProduct": update_product   # <--- NUEVO
     }
 )

@@ -1,133 +1,35 @@
 [
     {
-        "COD": "9759",
-        "PRODUCTO": "100G EXCELLENCE NR 90% LINDT",
-        "MARCA": "Lindt",
-        "CATEGORÍA": "Botanas",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "8004",
-        "PRODUCTO": "Excellence 70% Cocoa Intense Dark",
-        "MARCA": "Lindt",
-        "CATEGORÍA": "Lanches comida",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "8363",
-        "PRODUCTO": "Excellence 85% Cacao Rich Dark",
-        "MARCA": "Lindt",
-        "CATEGORÍA": "Lanches comida",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "5553",
-        "PRODUCTO": "Шоколад 85% какаова маса",
-        "MARCA": "J.D. Gross",
-        "CATEGORÍA": "Закуски",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "2024",
-        "PRODUCTO": "",
-        "MARCA": "Maruja",
-        "CATEGORÍA": "Snacks",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "8464",
-        "PRODUCTO": "Organic 70% Dark Chocolate Bar",
-        "MARCA": "Green & Black's",
-        "CATEGORÍA": "Snacks",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "2651",
-        "PRODUCTO": "100GR EXC NR MILD 70% LINDT",
-        "MARCA": "Lindt",
-        "CATEGORÍA": "Dairies",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "4724",
-        "PRODUCTO": "Dark chocolate",
-        "MARCA": "Green & Black's",
-        "CATEGORÍA": "Snacks",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "2606",
-        "PRODUCTO": "100G EXCELLENCE NOIR 85% LINDT",
-        "MARCA": "Lindt",
-        "CATEGORÍA": "Snacks",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "COD": "2464",
-        "PRODUCTO": "Extra dark chocolate 74% cacao",
-        "MARCA": "Fin Carré",
-        "CATEGORÍA": "snacks",
-        "STOCK": 0,
-        "PRECIO": 0.0,
-        "PROVEEDOR": "OpenFood Import"
-    },
-    {
-        "code": "7861029402267",
-        "name": "Leche Vita",
-        "brand": "Pasteurizadora Quito. S.A",
-        "category": "Lácteos",
-        "country": "Ecuador",
-        "price": 0.0,
-        "stock": 0
-    },
-    {
-        "code": "8436548626372",
-        "name": "",
-        "brand": "Perca Olivia",
-        "category": "Alimentos y bebidas de origen vegetal",
-        "country": "en:Ecuador",
-        "price": 1.0,
-        "stock": 2,
-        "supplier": "pepito"
-    },
-    {
-        "code": "7861029404803",
-        "name": "",
-        "brand": "Vita",
-        "category": "Dairies",
+        "code": "7861106411090",
+        "name": "Leche Entera",
+        "brand": "Parmalat",
+        "category": "Produits laitiers",
         "country": "Équateur",
-        "price": 0.0,
-        "stock": 0,
+        "price": 0.5,
+        "stock": 80,
         "supplier": "Genérico",
         "image_url": ""
     },
     {
-        "code": "8436548626372",
-        "name": "",
-        "brand": "Perca Olivia",
-        "category": "Alimentos y bebidas de origen vegetal",
-        "country": "en:Ecuador",
-        "price": 0.0,
-        "stock": 0,
+        "code": "7861005200641",
+        "name": "Café Liofilizado",
+        "brand": "Minerva",
+        "category": "Aliments et boissons à base de végétaux",
+        "country": "Équateur",
+        "price": 1.0,
+        "stock": 99,
         "supplier": "Genérico",
+        "image_url": ""
+    },
+    {
+        "code": "7702032005031",
+        "name": "Cappuccino Mocca",
+        "brand": "Colcafé,Nutresa",
+        "category": "Alimentos y bebidas de origen vegetal",
+        "country": "Bolivia",
+        "price": 3.5,
+        "stock": 20,
+        "supplier": "Pepito",
         "image_url": ""
     }
 ]
