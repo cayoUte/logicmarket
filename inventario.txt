@@ -1,5 +1,15 @@
 [
     {
+        "name": "Chocolate en polvo",
+        "brand": "La Universal",
+        "category": "Bebidas",
+        "code": "0001",
+        "price": 2.0,
+        "stock": 80,
+        "supplier": "La Favorita",
+        "image_url": ""
+    },
+    {
         "code": "7861106411090",
         "name": "Leche Entera",
         "brand": "Parmalat",
@@ -28,7 +38,18 @@
         "category": "Alimentos y bebidas de origen vegetal",
         "country": "Bolivia",
         "price": 3.5,
-        "stock": 20,
+        "stock": 0,
+        "supplier": "Pepito",
+        "image_url": ""
+    },
+    {
+        "code": "0076150601336",
+        "name": "ACT II sabor Mantequilla",
+        "brand": "Act II",
+        "category": "Botanas",
+        "country": "Ecuador",
+        "price": 1.5,
+        "stock": 100,
         "supplier": "Pepito",
         "image_url": ""
     }

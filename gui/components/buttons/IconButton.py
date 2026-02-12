@@ -4,18 +4,17 @@ from gui.theme.buttons import get_icon_theme
 import gui.utils as utils
 
 def IconButton(parent, icon_path, on_click, size=24, bg_parent=None, variant="primary", is_selected=False, ui_mode="light"):
-    theme = get_icon_theme(variant, mode=ui_mode) # <--- USAR LA FUNCIÓN
+    theme = get_icon_theme(variant, mode=ui_mode)
     
     def resolve(v):
         return get_app_color(v[0], v[1]) if isinstance(v, (tuple, list)) else v
 
-    # Resolvemos el fondo real (del padre o del tema)
     real_bg_parent = bg_parent if bg_parent else resolve(theme["parent_bg"])
     
     state = {
         "hover": False, 
         "pressed": False, 
-        "selected": is_selected, # Estado inicial
+        "selected": is_selected,
         "bg_parent": real_bg_parent,
         "color_normal": resolve(theme["normal"]),
         "color_hover": resolve(theme["hover_icon"]),
@@ -36,13 +35,11 @@ def IconButton(parent, icon_path, on_click, size=24, bg_parent=None, variant="pr
         cursor="hand2"
     )
 
-    def draw(offset=0):
+    def draw():
         canvas.delete("all")
         
-        # Determinar si está activo (Hover o Seleccionado permanentemente)
         active = state["hover"] or state["selected"]
         
-        # Determinar colores según estado
         if state["pressed"]:
             icon_color = state["color_active"]
             bg_circle = state["bg_hover"]
@@ -58,15 +55,11 @@ def IconButton(parent, icon_path, on_click, size=24, bg_parent=None, variant="pr
 
         center = (c_size / 2) + center_offset
 
-        # 1. Dibujar Círculo de Fondo (Solo si está activo/presionado)
         if active or state["pressed"]:
-            # Usamos get_circle_image para bordes suaves sobre el fondo del padre
             img = utils.get_circle_image(c_size - 2, bg_circle, real_bg_parent)
             canvas.create_image(center, center, image=img)
-            canvas.circle_ref = img # Retener referencia
+            canvas.circle_ref = img
 
-        # 2. Dibujar Icono SVG
-        # Importante: El 'bg' del icono debe ser el del círculo (si hay) o el del padre
         icon_bg_context = bg_circle 
         
         tk_icon = utils.load_svg_icon(
@@ -80,20 +73,17 @@ def IconButton(parent, icon_path, on_click, size=24, bg_parent=None, variant="pr
             canvas.create_image(center, center, image=tk_icon)
             canvas.icon_ref = tk_icon
 
-    # Dibujado inicial
     draw()
 
-    # --- EXPONER MÉTODOS PÚBLICOS (FIX CRÍTICO) ---
     def set_selected(val):
         state["selected"] = val
         draw()
         
     canvas.set_selected = set_selected
 
-    # --- Eventos ---
-    canvas.bind("<Enter>", lambda e: [state.update({"hover": True}), draw()])
-    canvas.bind("<Leave>", lambda e: [state.update({"hover": False, "pressed": False}), draw()])
-    canvas.bind("<Button-1>", lambda e: [state.update({"pressed": True}), draw()])
+    canvas.bind("<Enter>", lambda _: [state.update({"hover": True}), draw()])
+    canvas.bind("<Leave>", lambda _: [state.update({"hover": False, "pressed": False}), draw()])
+    canvas.bind("<Button-1>", lambda _: [state.update({"pressed": True}), draw()])
     
     def on_release(e):
         state.update({"pressed": False})

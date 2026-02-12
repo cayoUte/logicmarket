@@ -7,8 +7,7 @@ import gui.utils as utils
 
 def Pillow_Button(parent, text, on_click, icon_path=None, dimensions=(150, 45, 20), variant="primary", bg_parent=None, is_selected=False, ui_mode="light"):
     width, height, radius = dimensions
-    # 1. OBTENER TEMA DINÁMICO
-    theme = get_button_theme(variant, mode=ui_mode) # <--- USAR LA FUNCIÓN
+    theme = get_button_theme(variant, mode=ui_mode)
     font_config = get_font("button")
 
     def resolve_color(value):
@@ -22,7 +21,7 @@ def Pillow_Button(parent, text, on_click, icon_path=None, dimensions=(150, 45, 2
     state = {
         "pressed": False,
         "hover": False,
-        "selected": is_selected, # Soporte para selección
+        "selected": is_selected,
         "current_color": resolve_color(theme["main"]),
         "hover_color": resolve_color(theme["hover"]),
         "active_color": resolve_color(theme["active"]),
@@ -36,7 +35,6 @@ def Pillow_Button(parent, text, on_click, icon_path=None, dimensions=(150, 45, 2
     def draw(offset=0):
         canvas.delete("all")
         
-        # Lógica de color: Selected actúa como Hover persistente o Active
         is_active = state["hover"] or state["selected"]
         
         if state["pressed"]:
@@ -67,7 +65,6 @@ def Pillow_Button(parent, text, on_click, icon_path=None, dimensions=(150, 45, 2
         tk_bg = state["image_cache"][cache_key]
         canvas.create_image(width / 2 + offset, height / 2 + offset, image=tk_bg)
 
-        # Contenido (Texto/Icono)
         content_y = height / 2 + offset
         icon_color = state["text_color"]
         
@@ -90,13 +87,11 @@ def Pillow_Button(parent, text, on_click, icon_path=None, dimensions=(150, 45, 2
 
     draw()
 
-    # --- EXPONER MÉTODO ---
     def set_selected(val):
         state["selected"] = val
         draw()
     canvas.set_selected = set_selected
 
-    # Eventos
     canvas.bind("<Enter>", lambda e: [state.update({"hover": True}), draw()])
     canvas.bind("<Leave>", lambda e: [state.update({"hover": False, "pressed": False}), draw()])
     canvas.bind("<Button-1>", lambda e: [state.update({"pressed": True}), draw(2)])
